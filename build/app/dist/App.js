@@ -1,5 +1,6 @@
 import React from "../_snowpack/pkg/react.js";
 import "./App.css.proxy.js";
+import "./scss/index.css.proxy.js";
 function App({}) {
   return /* @__PURE__ */ React.createElement("div", {
     className: "App"

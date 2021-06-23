@@ -7,7 +7,9 @@ const htmlFileToEdit = path.join(directoryPath, 'app', 'index.html');
 fs.readFile(htmlFileToEdit, 'utf8', function (err, data) {
   const res = data
     .replace(/dist/g, 'app/dist')
-    .replace(/assets/g, 'app/assets');
+    .replace(/assets/g, 'app/assets')
+    .replace(/\/js/g, '/app/js')
+    .replace(/\/css/g, '/app/css');
   fs.writeFile(htmlFileToEdit, res, 'utf8', function (err) {
     if (err) return console.log(err);
   });
