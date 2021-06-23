@@ -5,9 +5,19 @@ export default {
     assets: { url: '/assets' },
     public: { url: '/' },
     src: { url: '/dist' },
+    scss: { url: '/style' },
   },
   plugins: [
     /* ... */
+    '@snowpack/plugin-typescript',
+    [
+      '@snowpack/plugin-sass',
+      {
+        compilerOptions: {
+          style: 'compressed',
+        },
+      },
+    ],
   ],
   routes: [
     /* Enable an SPA Fallback in development: */

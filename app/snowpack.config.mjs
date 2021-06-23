@@ -18,6 +18,20 @@ export default {
         ...(process.versions.pnp ? { tsc: 'yarn pnpify tsc' } : {}),
       },
     ],
+    [
+      '@snowpack/plugin-sass',
+      {
+        compilerOptions: {
+          style: 'compressed',
+        },
+      },
+    ],
+    [
+      '@snowpack/plugin-webpack',
+      {
+        /* see "Plugin Options" below */
+      },
+    ],
   ],
   routes: [
     /* Enable an SPA Fallback in development: */

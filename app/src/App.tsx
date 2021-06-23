@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './scss/index.scss';
 interface AppProps {}
 
 function App({}: AppProps) {
