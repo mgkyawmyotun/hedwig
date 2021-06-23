@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install:app": "(cd app && npm install)",
+    "install:home": "(cd home && npm install)",
     "build": "npm run build --prefix ./home && npm run build --prefix ./app"
   },
   "repository": {
