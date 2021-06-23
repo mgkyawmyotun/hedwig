@@ -2,6 +2,9 @@
 export default {
   mount: {
     /* ... */
+    assets: { url: '/assets' },
+    public: { url: '/' },
+    src: { url: '/dist' },
   },
   plugins: [
     /* ... */
@@ -22,5 +25,6 @@ export default {
   },
   buildOptions: {
     /* ... */
+    out: '../build',
   },
 };
