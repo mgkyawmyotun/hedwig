@@ -1,0 +1,21 @@
+{
+  "name": "hedwig",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build --prefix ./app && npm run build --prefix ./home"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgkyawmyotun/hedwig.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mgkyawmyotun/hedwig/issues"
+  },
+  "homepage": "https://github.com/mgkyawmyotun/hedwig#readme"
+}
