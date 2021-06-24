@@ -23,20 +23,22 @@
     />
     <link rel="manifest" href="/assets/site.webmanifest" />
     <link rel="stylesheet" type="text/css" href="style/index.css" />
-    <title>Starter Snowpack App</title>
+    <title>Hedwig</title>
     <script type="module" src="/dist/index.js" defer></script>
   </head>
   <body>
-    <nav>
+    <nav id="home">
       <div>
         <img src="/assets/logo.svg" alt="HedwigLogo" class="logo" />
         <h1>Hedwig</h1>
       </div>
       <div>
         <img src="/assets/menu.svg" alt="menuIcon" class="menu" />
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact</li>
+        <div class="hidden">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </div>
       </div>
     </nav>
     <main>
@@ -51,7 +53,7 @@
           <img src="/assets/mobile/api_img.png" alt="Api Image" />
           <h1>Request api endpoint from your browser</h1>
         </div>
-        <div class="card">
+        <div class="card" id="about">
           <img src="/assets/mobile/gql_img.png" alt="GQL Image" />
           <h1>Every graphql request can do with a click</h1>
         </div>
@@ -82,5 +84,24 @@
         <img src="/assets/mobile/app_light.png" alt="App Light Image" />
       </div>
     </main>
+    <footer id="contact">
+      <h1>You can reach us</h1>
+      <div>
+        <a href="mailto:mg.kmt.kyawmyotun@gmail.com">
+          <img src="/assets/mobile/Gmail.png" alt="Gmail "
+        /></a>
+        <a href="http://facebook.com/KillTheBoyLetTheMenBeBorn">
+          <img
+            src="/assets/mobile/Facebook Messenger.png"
+            alt="Facebook Messenger"
+        /></a>
+        <a href="http://facebook.com/KillTheBoyLetTheMenBeBorn">
+          <img src="/assets/mobile/Facebook.png" alt="Facebook"
+        /></a>
+        <a href="http://github.com/mgkyawmyotun/hedwig">
+          <img src="/assets/mobile/GitHub.png" alt="GitHub" />
+        </a>
+      </div>
+    </footer>
   </body>
 </html>

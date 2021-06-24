@@ -1,8 +1,10 @@
 /* Add CSS styles here! */
 @use 'font' as *;
 @use 'color';
+@use 'functions' as fun;
 @import './_nav';
 @import './_main';
+@import './_footer';
 *,
 ::after,
 ::before {
@@ -13,4 +15,7 @@ body {
 }
 h1 {
   margin: 0;
+}
+html {
+  scroll-behavior: smooth;
 }
