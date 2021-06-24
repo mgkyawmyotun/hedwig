@@ -1,10 +1,16 @@
 /* Add CSS styles here! */
-body {
-  font-family: sans-serif;
-  background-color: black;
+@use 'font' as *;
+@use 'color';
+@import './_nav';
+@import './_main';
+*,
+::after,
+::before {
+  box-sizing: border-box;
 }
-
+body {
+  margin: 0;
+}
 h1 {
-  font-size: 20px;
-  color: white;
+  margin: 0;
 }

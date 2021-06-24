@@ -1,0 +1,28 @@
+@use 'color';
+@use 'font';
+@use 'functions' as fun;
+@use 'utils' as *;
+.hero {
+  background-color: color.$non-photo-blue;
+  display: grid;
+  place-items: center;
+  gap: 1em;
+  padding: 1em 1em;
+  font-size: fun.responsive_font(2rem, 4.5rem, 22.5rem, 90rem);
+  font-family: font.$roboto;
+
+  & > img {
+  }
+  & > h1 {
+    text-align: center;
+    font-size: 1em;
+    color: color.$royal-blue-dark;
+  }
+  & > .button {
+    @include cursor-pointer;
+    padding: 0.5em 3em;
+    font-size: 0.6em;
+    color: color.$white;
+    background-color: color.$sapphire-blue;
+  }
+}

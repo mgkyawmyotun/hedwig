@@ -4,11 +4,64 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Starter Snowpack App" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/site.webmanifest" />
     <link rel="stylesheet" type="text/css" href="style/index.css" />
     <title>Starter Snowpack App</title>
+    <script type="module" src="/dist/index.js" defer></script>
   </head>
   <body>
-    <h1>Welcome to Snowpack!</h1>
-    <script type="module" src="/dist/index.js"></script>
+    <nav>
+      <div>
+        <img src="/assets/logo.svg" alt="HedwigLogo" class="logo" />
+        <h1>Hedwig</h1>
+      </div>
+      <div>
+        <img src="/assets/menu.svg" alt="menuIcon" class="menu" />
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+      </div>
+    </nav>
+    <main>
+      <div class="hero">
+        <img src="/assets/mobile/hero_image.png" alt="Hero Image" />
+        <h1>All in one REST client from your browser</h1>
+        <div class="button">Try Now</div>
+      </div>
+      <div class="info">
+        <h1>Why Hedwig?</h1>
+        <div class="card">
+          <img src="/assets/mobile/api_img.png" alt="Api Image" />
+          <h1>Request api endpoint from your browser</h1>
+        </div>
+        <div class="card">
+          <img src="/assets/mobile/gql_img.png" alt="GQL Image" />
+          <h1>Every graphql request can do with a click</h1>
+        </div>
+        <div class="card">
+          <img src="/assets/mobile/save_alt.png" alt="Save Alt Image" />
+          <h1>Save request in your browser with a click</h1>
+        </div>
+      </div>
+      <div class="about_white"></div>
+      <div class="about_black"></div>
+    </main>
   </body>
 </html>

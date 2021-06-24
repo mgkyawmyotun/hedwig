@@ -1,0 +1,34 @@
+@use 'utils' as ut;
+@use 'font' as *;
+@use 'color';
+@use 'functions' as *;
+nav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: color.$non-photo-blue;
+  font-size: responsive_font(1.25rem, 2rem, 22.5rem, 90rem);
+  padding: 0.5em 0.5em;
+  & > div:first-child {
+    @include ut.center-item-row;
+    & > img {
+      width: 1.75em;
+    }
+    & > h1 {
+      font-family: $roboto;
+      text-transform: uppercase;
+      font-size: inherit;
+    }
+  }
+  & > div:last-child {
+    @include ut.center-item-row;
+
+    & > li {
+      @include ut.hidden-element;
+    }
+    & > img {
+      @include ut.cursor-pointer;
+    }
+  }
+}

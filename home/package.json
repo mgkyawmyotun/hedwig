@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "snowpack dev",
+    "start": "snowpack dev --reload",
     "build": "snowpack build",
     "test": "echo \"This template does not include a test runner by default.\" && exit 1"
   },
@@ -10,4 +10,5 @@
     "snowpack": "^3.3.7",
     "typescript": "^4.3.4"
   }
+
 }

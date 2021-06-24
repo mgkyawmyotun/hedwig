@@ -14,7 +14,7 @@ export default {
       '@snowpack/plugin-sass',
       {
         compilerOptions: {
-          style: 'compressed',
+          // style: 'compressed',
         },
       },
     ],
