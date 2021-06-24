@@ -7,6 +7,9 @@ export default {
     assets: {
       url: '/assets',
     },
+    pwa: {
+      url: '/pwa',
+    },
   },
   plugins: [
     '@snowpack/plugin-react-refresh',
