@@ -1,0 +1,22 @@
+@use './funtions' as *;
+@use './font' as *;
+.nav_bar {
+  font-family: $righteous;
+  font-size: responsive_font(1.125rem, 1.75rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 1em;
+  .nav_bar__logo {
+    display: flex;
+    align-items: center;
+    & > h1 {
+      font-size: 1em;
+      padding-left: 0.2em;
+    }
+    & > div:last-child {
+      display: grid;
+      place-items: center;
+    }
+  }
+}

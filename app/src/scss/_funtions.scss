@@ -1,0 +1,18 @@
+@use 'sass:math';
+@function responsive_font(
+  $minFontSize,
+  $maxFontSize,
+  $minWidth: 22.5rem,
+  $maxWidth: 90rem
+) {
+  $slope: math.div($maxFontSize - $minFontSize, $maxWidth - $minWidth);
+  //   @debug $slope;
+
+  $yaxisintersection: -$minWidth * $slope + $minFontSize;
+  //   @debug $yaxisintersection;
+
+  //   @debug $res;
+  $preferredValue: #{$yaxisintersection}+ ' + ' + #{($slope * 100)}vw;
+  //   @debug $preferredValue;
+  @return clamp(#{$minFontSize}, #{$preferredValue}, #{$maxFontSize});
+}
