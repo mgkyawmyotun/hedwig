@@ -27,9 +27,19 @@ nav {
 
     & > img {
       @include ut.cursor-pointer;
+      @include ut.for_larger_device {
+        @include ut.hidden-element;
+      }
     }
     & > .hidden {
-      @include ut.hidden-element;
+      transform-origin: center;
+      transform: translateX(-50%) scale(0);
+      transition-property: transform;
+      transition-duration: 300ms;
+      @include ut.for_larger_device {
+        transform: scale(1);
+        display: flex !important;
+      }
     }
     & > div {
       position: absolute;
@@ -41,13 +51,32 @@ nav {
       transform-origin: center;
       transform: translateX(-50%) scale(1);
       transition-property: transform;
-      transition-duration: 1s;
+      transition-duration: 500ms;
 
       background-color: rgba($color: #ffffff, $alpha: 0.8);
 
       & > li {
         text-align: center;
         list-style: none;
+        padding: 0.5em 1.5em;
+        transition: background-color;
+        transition-duration: 500ms;
+        margin-top: 0.2em;
+        &:hover {
+          background-color: rgba(color.$sapphire-blue, $alpha: 0.5);
+        }
+        @include ut.for_larger_device {
+          margin-top: 0;
+          margin-left: 2em;
+        }
+      }
+      & > .active {
+        background-color: rgba(color.$sapphire-blue, $alpha: 0.5);
+      }
+      @include ut.for_larger_device {
+        all: initial;
+        display: flex !important;
+        font-family: $roboto;
       }
     }
   }
