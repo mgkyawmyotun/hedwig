@@ -11,6 +11,9 @@ nav {
   background-color: color.$non-photo-blue;
   font-size: responsive_font(1.25rem, 2rem, 22.5rem, 90rem);
   padding: 0.5em 0.5em;
+  @include ut.for_larger_device {
+    padding: 1em 1em;
+  }
   & > div:first-child {
     @include ut.center-item-row;
     & > img {

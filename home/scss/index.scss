@@ -23,3 +23,15 @@ html {
 a {
   text-decoration: none;
 }
+
+.eye {
+  animation: ticktick 1s ease-in 0ms infinite alternate;
+}
+@keyframes ticktick {
+  0% {
+    fill: #fff;
+  }
+  100% {
+    fill: #000;
+  }
+}

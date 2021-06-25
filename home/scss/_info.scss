@@ -1,3 +1,7 @@
+@use 'utils' as *;
+@use 'color';
+@use 'functions';
+@use 'font';
 .info {
   display: flex;
   flex-flow: column nowrap;
@@ -21,7 +25,7 @@
     align-items: center;
     justify-content: center;
     & > img {
-      width: min-content;
+      width: 50%;
       padding: 1em;
     }
     & > h1 {
@@ -29,5 +33,22 @@
       font-size: functions.responsive_font(1.125rem, 1.5rem);
     }
     filter: drop-shadow(0px 4px 4px rgba(10, 36, 114, 0.25));
+  }
+  @include for_larger_device {
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    & > h1 {
+      flex: 100%;
+      text-align: center;
+    }
+    & > .card {
+      width: 400px;
+      margin-left: 1em;
+      padding: 0.5em 0.25em;
+      & > img {
+        width: 80%;
+      }
+    }
   }
 }

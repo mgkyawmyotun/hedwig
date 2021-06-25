@@ -23,3 +23,9 @@ hidden_menu_items.childNodes.forEach((li: Element) => {
     hidden_menu_items.classList.toggle('hidden', true);
   });
 });
+
+const tryNowButton = document.querySelector('#tryNow');
+
+tryNowButton.addEventListener('click', () => {
+  window.location.href = '/app';
+});
