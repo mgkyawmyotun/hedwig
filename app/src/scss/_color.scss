@@ -1,0 +1,20 @@
+body {
+  --cultured: #f8f9faff;
+  --cultured-2: #e9ecefff;
+  --gainsboro: #dee2e6ff;
+  --light-gray: #ced4daff;
+  --cadet-blue-crayola: #adb5bdff;
+  --slate-gray: #6c757dff;
+  --davys-grey: #495057ff;
+  --gunmetal: #343a40ff;
+  --charleston-green: #212529ff;
+}
+$cultured: var(--cultured);
+$cultured-2: var(--cultured-2);
+$gainsboro: var(--gainsboro);
+$light-gray: var(--light-gray);
+$cadet-blue-crayola: var(--cadet-blue-crayola);
+$slate-gray: var(--slate-gray);
+$davys-grey: var(--davys-grey);
+$gunmetal: var(--gunmetal);
+$charleston-green: var(--charleston-green);

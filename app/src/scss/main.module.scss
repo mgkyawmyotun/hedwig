@@ -1,0 +1,16 @@
+@use 'font';
+@use 'funtions' as *;
+.main {
+  width: 90%;
+  height: 80vh;
+
+  font-size: responsive_font(0.875rem, 1.5rem);
+  font-family: font.$righteous;
+  border: 1px solid grey;
+  margin: 1em auto;
+  padding: 1em 1.5em;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2em;
+}

@@ -1,9 +1,17 @@
 import type { FC } from 'react';
 import React from 'react';
+import styles from '../../scss/main.module.scss';
+import { Button } from './Button';
+import { Collection } from './collection';
+import { RequestInput } from './RequestInput';
 export const Main: FC = () => {
   return (
-    <>
-      <h1>Hello WOrld</h1>
-    </>
+    <div className={styles.main}>
+      <Collection />
+      <div>
+        <RequestInput />
+      </div>
+      <Button />
+    </div>
   );
 };

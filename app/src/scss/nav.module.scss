@@ -1,12 +1,15 @@
 @use './funtions' as *;
 @use './font' as *;
+@use 'color';
 .nav_bar {
   font-family: $righteous;
   font-size: responsive_font(1.125rem, 1.75rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5em 1em;
+  padding: 0.75em 3em;
+  color: color.$charleston-green;
+  fill: color.$charleston-green;
   .nav_bar__logo {
     display: flex;
     align-items: center;
@@ -14,9 +17,10 @@
       font-size: 1em;
       padding-left: 0.2em;
     }
-    & > div:last-child {
-      display: grid;
-      place-items: center;
-    }
+  }
+  & > div:last-child {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
   }
 }
