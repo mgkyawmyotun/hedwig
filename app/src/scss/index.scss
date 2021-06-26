@@ -1,3 +1,4 @@
+@use 'color';
 *,
 ::after,
 ::before {
@@ -5,6 +6,8 @@
 }
 body {
   margin: 0;
+
+  background-color: color.$cultured;
 }
 h1 {
   margin: 0;
