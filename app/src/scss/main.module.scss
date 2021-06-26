@@ -1,5 +1,5 @@
 @use 'font';
-@use 'funtions' as *;
+@use 'functions' as *;
 .main {
   width: 90%;
   height: 80vh;
@@ -9,7 +9,7 @@
   margin: 1em auto;
   padding: 1em 1.5em;
   display: grid;
-  grid-template-columns: 1fr 9fr;
-  grid-template-rows: repeat(3, 1fr);
-  gap: 2em;
+  grid-template-columns: minmax(max-content, 1.5fr) 9fr;
+  // grid-template-rows: repeat(3, 1fr);
+  gap: 1em;
 }

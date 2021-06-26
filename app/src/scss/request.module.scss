@@ -1,6 +1,6 @@
 @use 'font';
 @use 'color';
-@use 'funtions' as *;
+@use 'functions' as *;
 @mixin border-px-gray($px: 1px) {
   border: #{$px} solid color.$light-gray;
 }

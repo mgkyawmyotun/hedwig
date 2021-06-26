@@ -1,0 +1,72 @@
+@use 'helper' as *;
+@use 'functions' as fun;
+@use 'font';
+@use 'color';
+
+.collection {
+  width: 100%;
+  height: 100%;
+  @include border-px-gray(2px);
+  padding: 0.5em 0.5em;
+
+  & > .collection__header {
+    font-family: font.$righteous;
+    font-size: fun.responsive_font(0.875rem, 1.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: color.$charleston-green;
+
+    & > h1 {
+      font-size: inherit;
+    }
+
+    & > div {
+      margin-left: 1em;
+      font-size: 1.25em;
+      cursor: pointer;
+    }
+  }
+
+  & > .collection__item {
+    width: 100%;
+    margin: 1em auto;
+    padding: 0.2em;
+    @include border-px-gray(1px);
+    & > div:first-child {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      & > p {
+        margin: 0;
+        font-size: max(16px, 0.8em);
+      }
+      & > svg {
+        width: 0.5em;
+        margin-left: 0.2em;
+        cursor: pointer;
+      }
+    }
+    & > .collection__item__request_item {
+      &:nth-child(2) {
+        margin: 0.5em 0 0 1em;
+      }
+      margin: 0em 0 0 1em;
+      display: flex;
+      align-items: center;
+      color: color.$slate-gray;
+      transform: scale(0);
+      display: none;
+      & > h1 {
+        font-size: max(14px, 0.6em);
+        letter-spacing: 0.1em;
+        margin-left: 0.2em;
+        line-height: 1.4;
+        padding: 0 0 0.2em 0;
+      }
+      & > svg {
+        width: 0.8em;
+      }
+    }
+  }
+}
