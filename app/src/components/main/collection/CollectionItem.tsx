@@ -1,23 +1,35 @@
-import type { FC } from 'react';
-import React from 'react';
+import React, { FC, useState } from 'react';
 import { ArrowIcon, ArrowType } from '../../../svg/ArrowIcon';
 import styles from './../../../scss/collection.module.scss';
 import { RequestItem } from './RequestItem';
 interface CollectionItemProps {}
 export const CollectionItem: FC<CollectionItemProps> = () => {
+  const [arrowType, setArrowType] = useState<ArrowType>(ArrowType.UP);
+  const [showItem, setShowItem] = useState<boolean>(false);
   return (
     <div className={styles.collection__item}>
       <div>
         <p>Collection Name</p>
-        <ArrowIcon type={ArrowType.DOWN} />
+        <ArrowIcon
+          type={arrowType}
+          onChange={() => {
+            setArrowType((prev) =>
+              prev === ArrowType.DOWN ? ArrowType.UP : ArrowType.DOWN,
+            );
+            setShowItem((prev) => !prev);
+          }}
+        />
       </div>
-
-      <RequestItem />
-      <RequestItem />
-      <RequestItem />
-      <RequestItem />
-      <RequestItem />
-      <RequestItem />
+      {showItem && (
+        <div className={[styles.collection__item__request_items].join('')}>
+          <RequestItem />
+          <RequestItem />
+          <RequestItem />
+          <RequestItem />
+          <RequestItem />
+          <RequestItem />
+        </div>
+      )}
     </div>
   );
 };
