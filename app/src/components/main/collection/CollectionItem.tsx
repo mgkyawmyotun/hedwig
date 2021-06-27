@@ -6,10 +6,17 @@ interface CollectionItemProps {}
 export const CollectionItem: FC<CollectionItemProps> = () => {
   const [arrowType, setArrowType] = useState<ArrowType>(ArrowType.UP);
   const [showItem, setShowItem] = useState<boolean>(false);
+  const [editAble, seteditAble] = useState<boolean>(false);
   return (
     <div className={styles.collection__item}>
       <div>
-        <p>Collection Name</p>
+        <p
+          contentEditable={editAble}
+          onDoubleClick={() => seteditAble(true)}
+          onPointerLeave={() => seteditAble(false)}
+        >
+          Collection Name
+        </p>
         <ArrowIcon
           type={arrowType}
           onChange={() => {

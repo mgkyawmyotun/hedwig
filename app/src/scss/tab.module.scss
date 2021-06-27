@@ -1,0 +1,19 @@
+@use 'helper';
+@use 'color';
+@use 'functions';
+.tab__header {
+  @include helper.border-px-gray(2px);
+  width: max-content;
+  display: flex;
+  align-items: center;
+  & > .tab__header__item {
+    color: color.$davys-grey;
+    font-size: functions.responsive_font(0.875rem, 1.125rem);
+    padding: 0.2em 0.8em;
+    position: relative;
+    cursor: pointer;
+    &::after {
+      @include helper.left-stick;
+    }
+  }
+}

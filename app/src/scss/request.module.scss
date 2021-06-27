@@ -1,18 +1,12 @@
 @use 'font';
 @use 'color';
 @use 'functions' as *;
-@mixin border-px-gray($px: 1px) {
-  border: #{$px} solid color.$light-gray;
-}
-@mixin center-absolute-position {
-  top: 50%;
-  transform: translateY(-50%);
-}
+@use 'helper' as *;
 
 .request {
   display: grid;
   grid-template-columns: minmax(max-content, 8%) 77% minmax(max-content, 15%);
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr;
 
   & > input {
     font-size: responsive_font(0.875rem, 1.5rem);
@@ -86,6 +80,7 @@
     position: absolute;
     top: 80%;
     left: -5%;
+    z-index: 1000;
     background-color: color.$cultured-2;
     font-size: responsive_font(0.5rem, 1.125rem);
     @include border-px-gray;

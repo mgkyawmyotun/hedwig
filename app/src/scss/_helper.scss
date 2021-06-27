@@ -2,3 +2,19 @@
 @mixin border-px-gray($px: 1px) {
   border: #{$px} solid color.$light-gray;
 }
+@mixin border-px-gray($px: 1px) {
+  border: #{$px} solid color.$light-gray;
+}
+@mixin center-absolute-position {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin left-stick($height: 80%) {
+  content: '';
+  position: absolute;
+  left: 100%;
+  @include center-absolute-position;
+  border-left: 1px solid color.$light-gray;
+  height: 80%;
+}

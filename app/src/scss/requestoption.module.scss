@@ -1,0 +1,6 @@
+@use 'helper';
+.request_option_main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content;
+}

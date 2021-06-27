@@ -42,6 +42,13 @@
       & > p {
         margin: 0;
         font-size: max(16px, 0.8em);
+        text-overflow: ellipsis;
+        max-width: fit-content;
+        &:read-write:focus {
+          outline: none;
+          border: 2px solid grey;
+          padding: 0.5em;
+        }
       }
       & > svg {
         width: 0.5em;
