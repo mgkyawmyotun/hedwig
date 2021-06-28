@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import React from 'react';
 import { LongArrow } from '../../../../svg/LongArrow';
 import styles from './../../../../scss/requestoption.module.scss';
+import { ContentEdiable } from './../../../utils/ContentEdiable';
 
 interface HeaderItemProps {
   property: string;
@@ -11,11 +12,11 @@ export const HeaderItem: FC<HeaderItemProps> = ({ property, value }) => {
   return (
     <div className={styles.header__item}>
       <div>
-        <h1 contentEditable={true}>{property}</h1>
+        <ContentEdiable>User Agent</ContentEdiable>
       </div>
       <LongArrow />
       <div>
-        <h1 contentEditable={true}>{value}</h1>
+        <ContentEdiable>Post Man /Blah Blah !23</ContentEdiable>
       </div>
     </div>
   );

@@ -1,23 +1,17 @@
 import React, { FC, useState } from 'react';
 import { ArrowIcon, ArrowType } from '../../../svg/ArrowIcon';
 import styles from './../../../scss/collection.module.scss';
+import { ContentEdiable } from './../../utils/ContentEdiable';
 import { RequestItem } from './RequestItem';
 interface CollectionItemProps {}
 export const CollectionItem: FC<CollectionItemProps> = () => {
   const [arrowType, setArrowType] = useState<ArrowType>(ArrowType.UP);
   const [showItem, setShowItem] = useState<boolean>(false);
-  const [editAble, setEditAble] = useState<boolean>(false);
 
   return (
     <div className={styles.collection__item}>
       <div>
-        <p
-          contentEditable={editAble}
-          onDoubleClick={() => setEditAble(true)}
-          onPointerLeave={() => setEditAble(false)}
-        >
-          Collection Name
-        </p>
+        <ContentEdiable>Collection Name</ContentEdiable>
         <ArrowIcon
           type={arrowType}
           onChange={() => {

@@ -18,3 +18,18 @@
   border-left: 1px solid color.$light-gray;
   height: 80%;
 }
+
+@mixin content-editable(
+  $padding: 0.5em 0.5em,
+  $border-width: 2px,
+  $border-color: color.$light-gray
+) {
+  &:read-write:focus {
+    outline: none;
+    border: #{$border-width} solid #{$border-color};
+    padding: #{$padding};
+  }
+  &:read-only {
+    outline: none;
+  }
+}

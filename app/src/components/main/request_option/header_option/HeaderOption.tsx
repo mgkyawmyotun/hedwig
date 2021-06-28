@@ -11,6 +11,7 @@ export const HeaderOption: FC<HeaderOptionProps> = (params) => {
       <div className={styles.header__options__items}>
         <HeaderItem property="UserAgent" value="GoogleChrome/ 1.23" />
       </div>
+      <button className={styles.header__button}>Add</button>
     </div>
   );
 };

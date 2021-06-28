@@ -36,9 +36,9 @@
     flex: 2 1;
     @include helper.border-px-gray(1px);
     padding: 0.2em 0.5em;
-    & > h1 {
+    & > p {
       font-size: functions.responsive_font(0.875rem, 1.125rem);
-      overflow-wrap: none;
+      @include helper.content-editable(0.3em 0.6em, 1px, color.$davys-grey);
     }
   }
 
@@ -51,8 +51,9 @@
     @include helper.border-px-gray(1px);
     padding: 0.2em 0.5em;
     flex: 3 1;
-    & > h1 {
+    & > p {
       font-size: functions.responsive_font(0.875rem, 1.125rem);
+      @include helper.content-editable(0.3em 0.6em, 1px, color.$davys-grey);
     }
   }
 }
