@@ -5,7 +5,7 @@
 
 .request {
   display: grid;
-  grid-template-columns: minmax(max-content, 8%) 77% minmax(max-content, 15%);
+  grid-template-columns: minmax(max-content, 8%) 75% minmax(max-content, 17%);
   grid-template-rows: 1fr;
 
   & > input {
@@ -26,19 +26,39 @@
     }
   }
 
-  & > button {
+  & .request__send_button {
+    height: 100%;
     font-size: responsive_font(0.875rem, 1.125rem);
     font-family: font.$righteous;
     border-style: none;
     background-color: transparent;
     cursor: pointer;
-    margin-left: 0.5em;
+    margin-left: 0.2em;
+    padding: 0.5em 1em;
     @include border-px-gray(2px);
     transition-property: background-color color;
     transition-duration: 200ms;
     &:hover {
       background-color: color.$charleston-green;
       color: color.$cultured;
+    }
+  }
+  & .request__save_button {
+    height: 100%;
+    font-size: responsive_font(0.875rem, 1.125rem);
+    font-family: font.$righteous;
+    padding: 0.5em 1em;
+    border-style: none;
+    cursor: pointer;
+    margin-left: 0.1em;
+    @include border-px-gray(2px);
+    transition-property: background-color color;
+    transition-duration: 200ms;
+    background-color: color.$light-gray;
+    color: color.$davys-grey;
+    &:hover {
+      background-color: transparent;
+      color: color.$davys-grey;
     }
   }
 }

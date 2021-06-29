@@ -10,12 +10,12 @@
   padding: 1em 1.5em;
   display: grid;
   grid-template-columns: minmax(max-content, 1.5fr) 9fr;
-  // grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   column-gap: 1em;
   & > .main__function {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: min-content 1fr 1fr;
+    grid-template-rows: min-content max-content max-content;
     row-gap: 0.5em;
   }
 }

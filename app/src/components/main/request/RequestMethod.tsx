@@ -1,13 +1,21 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import styles from '../../../scss/request.module.scss';
 import { ArrowIcon, ArrowType } from '../../../svg/ArrowIcon';
+import { MainFunctionContext } from '../MainFunctionContext';
 import { RequestMethodDrawer } from './RequestMethodDrawer';
-
+import type { RequestMethodType } from './type';
 interface RequestMethodProps {}
 export const RequestMethod: FC<RequestMethodProps> = () => {
+  const context = useContext(MainFunctionContext);
+
   const [arrowType, setArrowType] = useState<ArrowType>(ArrowType.UP);
   const [showDrawer, setShowDrawer] = useState<boolean>(false);
-  const [methodValue, setMethodValue] = useState<string>('GET');
+  const [methodValue, setMethodValue] = useState<RequestMethodType>('GET');
+  useEffect(() => {
+    if (context) {
+      context.method = methodValue;
+    }
+  }, [methodValue]);
   const switchRequestMethod = (
     e?: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
@@ -23,7 +31,7 @@ export const RequestMethod: FC<RequestMethodProps> = () => {
         <ArrowIcon type={arrowType} />
       </div>
       <RequestMethodDrawer
-        methods={['GET', 'POST', 'PUT', 'DELETE', 'HEAD']}
+        methods={['GET', 'POST', 'PUT', 'DELETE']}
         show={showDrawer}
         onValueChange={(method) => {
           setMethodValue(method);

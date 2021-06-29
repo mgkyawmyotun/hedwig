@@ -1,10 +1,11 @@
 import type { FC } from 'react';
 import React from 'react';
 import styles from '../../../scss/request.module.scss';
+import type { RequestMethodType } from './type';
 interface RequestMethodDrawerProps {
-  methods: string[];
+  methods: RequestMethodType[];
   show: boolean;
-  onValueChange: (method: string) => void;
+  onValueChange: (method: RequestMethodType) => void;
 }
 export const RequestMethodDrawer: FC<RequestMethodDrawerProps> = ({
   methods,

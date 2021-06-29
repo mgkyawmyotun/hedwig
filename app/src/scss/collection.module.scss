@@ -39,11 +39,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      & > p {
-        margin: 0;
+      & > input {
+        font-family: inherit;
         font-size: max(16px, 0.8em);
-        text-overflow: ellipsis;
-        max-width: fit-content;
+        padding: 0.2em;
         @include content-editable;
       }
       & > svg {

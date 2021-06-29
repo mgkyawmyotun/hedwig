@@ -25,11 +25,19 @@
   $border-color: color.$light-gray
 ) {
   &:read-write:focus {
+    border-style: none;
     outline: none;
     border: #{$border-width} solid #{$border-color};
     padding: #{$padding};
+    background-color: transparent;
   }
   &:read-only {
-    outline: none;
+    border-style: none;
+    background-color: transparent;
   }
+  border-style: none;
+  background-color: transparent;
+}
+
+@mixin botton-style {
 }

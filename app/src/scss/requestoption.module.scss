@@ -11,10 +11,32 @@
   //select by custom html property
   &[data-id='header'] {
     padding: 0.5em;
-    & > h1 {
-      color: color.$davys-grey;
-      font-family: font.$righteous;
-      font-size: functions.responsive_font(0.875rem, 1.5rem);
+    & > div:first-child {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      & > h1 {
+        color: color.$davys-grey;
+        font-family: font.$righteous;
+        font-size: functions.responsive_font(0.875rem, 1.5rem);
+      }
+      & > button {
+        align-self: flex-end;
+        padding: 0.5em 2em;
+        font-size: responsive_font(0.875rem, 1.125rem);
+        font-family: font.$righteous;
+        border-style: none;
+        background-color: transparent;
+        cursor: pointer;
+        @include helper.border-px-gray(2px);
+        transition-property: background-color color;
+        transition-duration: 200ms;
+        &:hover {
+          background-color: color.$charleston-green;
+          color: color.$cultured;
+        }
+      }
     }
   }
   &[data-id='body'] {
@@ -33,10 +55,11 @@
   color: color.$davys-grey;
   font-family: font.$righteous;
   & > div:first-child {
-    flex: 2 1;
+    flex: 1 1;
     @include helper.border-px-gray(1px);
     padding: 0.2em 0.5em;
-    & > p {
+    & > input {
+      font-family: inherit;
       font-size: functions.responsive_font(0.875rem, 1.125rem);
       @include helper.content-editable(0.3em 0.6em, 1px, color.$davys-grey);
     }
@@ -51,7 +74,8 @@
     @include helper.border-px-gray(1px);
     padding: 0.2em 0.5em;
     flex: 3 1;
-    & > p {
+    & > input {
+      font-family: inherit;
       font-size: functions.responsive_font(0.875rem, 1.125rem);
       @include helper.content-editable(0.3em 0.6em, 1px, color.$davys-grey);
     }

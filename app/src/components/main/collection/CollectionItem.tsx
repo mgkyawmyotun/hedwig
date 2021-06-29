@@ -11,7 +11,10 @@ export const CollectionItem: FC<CollectionItemProps> = () => {
   return (
     <div className={styles.collection__item}>
       <div>
-        <ContentEdiable>Collection Name</ContentEdiable>
+        <ContentEdiable
+          defaultValue="collection name"
+          maxSize={10}
+        ></ContentEdiable>
         <ArrowIcon
           type={arrowType}
           onChange={() => {
