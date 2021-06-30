@@ -1,23 +1,20 @@
-import React, { FC, useEffect } from 'react';
-import validator from 'validator';
+import React, { FC } from 'react';
 interface RequestInputProps {
   value: string;
   onURLChange: (value: string) => void;
+  isValid: boolean;
 }
-export const RequestInput: FC<RequestInputProps> = ({ value, onURLChange }) => {
-  useEffect(() => {
-    const isValid = validator.isURL(value, {
-      require_host: true,
-      require_tld: false,
-    });
-    console.log(isValid);
-  }, [value]);
+export const RequestInput: FC<RequestInputProps> = ({
+  value,
+  onURLChange,
+  isValid,
+}) => {
   return (
     <input
       placeholder="Enter request url"
       value={value}
       onChange={(e) => onURLChange(e.currentTarget.value)}
-      data-valid={`${true}`}
+      data-valid={`${isValid}`}
     ></input>
   );
 };

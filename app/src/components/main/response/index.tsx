@@ -2,9 +2,14 @@ import type { FC } from 'react';
 import React from 'react';
 import { Tab, TabItemsType } from '../../tab';
 import styles from './../../../scss/response.module.scss';
+import { ResponseBodyOption } from './body_option/ResponseBodyOption';
 
 const tabItems: TabItemsType = [
-  { body: (props) => <div {...props} className={styles.response__item}></div> },
+  {
+    body: (props) => (
+      <ResponseBodyOption {...props} className={styles.response__item} />
+    ),
+  },
   {
     cookies: (props) => (
       <div {...props} className={styles.response__item}></div>

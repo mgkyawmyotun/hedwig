@@ -21,7 +21,12 @@ export const ContentEdiable: FC<ContentEdiableProps> = ({
       type="text"
       value={value}
       onDoubleClick={() => setEditAble(true)}
-      onChange={(e) => setValue(e.currentTarget.value)}
+      onChange={(e) => {
+        setValue(e.currentTarget.value);
+        if (onContentChange) {
+          onContentChange(value);
+        }
+      }}
       style={{ minWidth: 0, textOverflow: 'ellipsis' }}
       readOnly={!editAble}
       inputMode={'text'}

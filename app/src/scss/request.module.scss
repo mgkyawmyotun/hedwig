@@ -24,6 +24,9 @@
       font-family: font.$righteous;
       color: color.$davys-grey;
     }
+    &[data-valid='false'] {
+      border: 2px solid red;
+    }
   }
 
   & .request__send_button {
@@ -38,9 +41,18 @@
     @include border-px-gray(2px);
     transition-property: background-color color;
     transition-duration: 200ms;
+    color: color.$davys-grey;
     &:hover {
       background-color: color.$charleston-green;
       color: color.$cultured;
+    }
+    &:disabled {
+      cursor: default;
+      color: color.$light-gray;
+      &:hover {
+        background-color: initial;
+        color: color.$light-gray;
+      }
     }
   }
   & .request__save_button {

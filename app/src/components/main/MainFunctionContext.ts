@@ -7,6 +7,10 @@ export type MainContextType = {
   method: RequestMethodType;
   options?: ReqeustOptions;
   params?: ParamsType;
+
+  response: Response | null;
+  setResponse: React.Dispatch<React.SetStateAction<Response | null>>;
+  setHeaderOption: React.Dispatch<React.SetStateAction<[string, string][]>>;
 };
 const MainFunctionContext = React.createContext<MainContextType | null>(null);
 MainFunctionContext.displayName = 'MainFunctionContext(RequestObject)';

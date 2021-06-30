@@ -6,12 +6,10 @@ export const makeRequest = async (
   options?: ReqeustOptions,
   params?: ParamsType,
 ) => {
-  const raw_response = await fetch(url, {
+  const response = await fetch(url, {
     method,
     credentials: 'include',
   });
-  console.log(await raw_response.text());
-  const response = await raw_response.json();
 
   return response;
 };
