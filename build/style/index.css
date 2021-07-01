@@ -1,1 +1,317 @@
-body{font-family:sans-serif;background-color:#000}h1{font-size:20px;color:#fff}
+@import url("https://fonts.googleapis.com/css2?family=Aladin&family=Roboto:wght@500;700&display=swap");
+/* Add CSS styles here! */
+@import url("https://fonts.googleapis.com/css2?family=Aladin&family=Roboto:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aladin&family=Roboto:wght@500;700&display=swap");
+nav {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #a6e1faff;
+  font-size: clamp(1.25rem, 1rem + 1.1111111111vw, 2rem);
+  padding: 0.5em 0.5em;
+}
+@media (min-width: 600px) {
+  nav {
+    padding: 1em 1em;
+  }
+}
+nav > div:first-child {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+}
+nav > div:first-child > img {
+  width: 1.75em;
+}
+nav > div:first-child > h1 {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  font-size: inherit;
+}
+nav > div:last-child {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+}
+nav > div:last-child > img {
+  cursor: pointer;
+}
+@media (min-width: 600px) {
+  nav > div:last-child > img {
+    display: none;
+  }
+}
+nav > div:last-child > .hidden {
+  transform-origin: center;
+  transform: translateX(-50%) scale(0);
+  transition-property: transform;
+  transition-duration: 300ms;
+}
+@media (min-width: 600px) {
+  nav > div:last-child > .hidden {
+    transform: scale(1);
+    display: flex !important;
+  }
+}
+nav > div:last-child > div {
+  position: absolute;
+  font-family: "Roboto", sans-serif;
+  width: 80%;
+  top: 20%;
+  left: 50%;
+  padding: 1em;
+  transform-origin: center;
+  transform: translateX(-50%) scale(1);
+  transition-property: transform;
+  transition-duration: 500ms;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+nav > div:last-child > div > li {
+  text-align: center;
+  list-style: none;
+  padding: 0.5em 1.5em;
+  transition: background-color;
+  transition-duration: 500ms;
+  margin-top: 0.2em;
+}
+nav > div:last-child > div > li:hover {
+  background-color: rgba(14, 107, 168, 0.5);
+}
+@media (min-width: 600px) {
+  nav > div:last-child > div > li {
+    margin-top: 0;
+    margin-left: 2em;
+  }
+}
+nav > div:last-child > div > .active {
+  background-color: rgba(14, 107, 168, 0.5);
+}
+@media (min-width: 600px) {
+  nav > div:last-child > div {
+    all: initial;
+    display: flex !important;
+    font-family: "Roboto", sans-serif;
+  }
+}
+
+main {
+  @import url("https://fonts.googleapis.com/css2?family=Aladin&family=Roboto:wght@500;700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Aladin&family=Roboto:wght@500;700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Aladin&family=Roboto:wght@500;700&display=swap");
+}
+main .hero {
+  background-color: #a6e1faff;
+  display: grid;
+  place-items: center;
+  gap: 1em;
+  padding: 1em 1em;
+  font-size: clamp(2rem, 1.3333333333rem + 2.962962963vw, 4rem);
+  font-family: "Roboto", sans-serif;
+}
+main .hero > h1 {
+  text-align: center;
+  font-size: 1em;
+  color: #001c55ff;
+}
+main .hero > .button {
+  cursor: pointer;
+  padding: 0.5em 3em;
+  font-size: 0.6em;
+  color: #ffffff;
+  background-color: #0e6ba8ff;
+}
+@media (min-width: 600px) {
+  main .hero {
+    padding: 1.5em 2em;
+    place-items: start;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    column-gap: 0.1em;
+  }
+  main .hero > h1 {
+    padding-top: 2em;
+    grid-column: 1/2;
+    text-align: left;
+    line-height: 0.99;
+    align-self: center;
+  }
+  main .hero > img {
+    grid-column: 2/3;
+    grid-row: 1/2 span;
+    width: min(400px, 100%);
+    justify-self: center;
+    align-self: center;
+  }
+  main .hero > .button {
+    grid-column: 1/2;
+    padding: 0.5em 2em;
+    font-size: 0.5em;
+  }
+}
+main .info {
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #0e6ba8ff;
+  align-items: center;
+  font-size: clamp(1.5rem, 0.5rem + 4.4444444444vw, 4.5rem);
+  padding: 1em 0.5em;
+}
+main .info > h1 {
+  color: #ffffff;
+  font-size: 1em;
+}
+main .info > .card {
+  font-family: "Aladin", cursive;
+  width: min(400px, 70%);
+  color: #ffffff;
+  background-color: #0a2472ff;
+  margin-top: 0.5em;
+  padding: 1em 0.5em;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0px 4px 4px rgba(10, 36, 114, 0.25));
+}
+main .info > .card > img {
+  width: 50%;
+  padding: 1em;
+}
+main .info > .card > h1 {
+  text-align: center;
+  font-size: clamp(1.125rem, 1rem + 0.5555555556vw, 1.5rem);
+}
+@media (min-width: 600px) {
+  main .info {
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  main .info > h1 {
+    flex: 100%;
+    text-align: center;
+  }
+  main .info > .card {
+    width: 400px;
+    margin-left: 1em;
+    padding: 0.5em 0.25em;
+  }
+  main .info > .card > img {
+    width: 80%;
+  }
+}
+main .about {
+  padding: 4em 1em;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+main .about > div > h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: clamp(1.5rem, 1.25rem + 1.1111111111vw, 2.25rem);
+  position: relative;
+}
+main .about > div > h1::before {
+  content: "|";
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  font-size: 1.5em;
+}
+@media (min-width: 600px) {
+  main .about > div > h1::before {
+    left: -20px;
+  }
+}
+main .about > div > ul > li {
+  font-family: "Roboto", sans-serif;
+  font-weight: medium;
+  font-size: clamp(1rem, 0.8333333333rem + 0.7407407407vw, 1.5rem);
+}
+main .about > img {
+  width: min-content;
+  margin-top: 1em;
+}
+@media (min-width: 600px) {
+  main .about {
+    flex-flow: row nowrap;
+  }
+  main .about > img {
+    width: min(600px, 60%);
+  }
+  main .about > div {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+main > [data-color=white] {
+  background-color: white;
+  color: black;
+}
+main > [data-color=black] {
+  background-color: black;
+  color: white;
+}
+@media (min-width: 600px) {
+  main > [data-color=black] {
+    flex-flow: row-reverse nowrap;
+  }
+}
+
+footer {
+  padding: 2em 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  background-color: #a6e1faff;
+}
+footer > h1 {
+  font-size: clamp(1.5rem, 1.25rem + 1.1111111111vw, 2.25rem);
+}
+footer > div {
+  margin-top: 2em;
+}
+footer > div > * {
+  padding: 1em;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+.eye {
+  animation: ticktick 1s ease-in 0ms infinite alternate;
+}
+
+@keyframes ticktick {
+  0% {
+    fill: #fff;
+  }
+  100% {
+    fill: #000;
+  }
+}
