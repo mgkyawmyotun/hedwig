@@ -9,7 +9,7 @@ import { Response } from './response';
 export const Main: FC = () => {
   const [response, setResponse] = useState<Response | null>(null);
   const [headerOption, setHeaderOption] = useState<[string, string][]>([
-    ['', ''],
+    ['User-Agent', navigator.userAgent],
   ]);
 
   return (

@@ -36,7 +36,11 @@ export const RequestForm: FC = () => {
             if (context) {
               context.url = URLValue;
               try {
-                const response = await makeRequest(context.url, context.method);
+                const response = await makeRequest(
+                  context.url,
+                  context.method,
+                  context.options,
+                );
                 context.setResponse(response);
               } catch (error) {
                 console.log(error);

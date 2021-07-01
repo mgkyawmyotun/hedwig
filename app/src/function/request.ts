@@ -6,9 +6,11 @@ export const makeRequest = async (
   options?: ReqeustOptions,
   params?: ParamsType,
 ) => {
+  console.log(options);
   const response = await fetch(url, {
     method,
     credentials: 'include',
+    headers: options && options.headers,
   });
 
   return response;

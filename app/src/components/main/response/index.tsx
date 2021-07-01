@@ -3,6 +3,7 @@ import React from 'react';
 import { Tab, TabItemsType } from '../../tab';
 import styles from './../../../scss/response.module.scss';
 import { ResponseBodyOption } from './body_option/ResponseBodyOption';
+import { ResponseHeaderOption } from './header_option/ResponseHeaderOption';
 
 const tabItems: TabItemsType = [
   {
@@ -16,7 +17,12 @@ const tabItems: TabItemsType = [
     ),
   },
   {
-    header: (props) => <div {...props} className={styles.response__item}></div>,
+    header: (props) => (
+      <ResponseHeaderOption
+        {...props}
+        className={styles.response__item}
+      ></ResponseHeaderOption>
+    ),
   },
 ];
 interface ResponseProps {}

@@ -17,10 +17,50 @@
   & .response__item {
     margin: 0.5em 0 0 0em;
     width: 100%;
+    max-width: 75vw;
     height: 25vh;
+    position: relative;
     &[data-id='response-body'] {
+      font-size: functions.responsive_font(0.875rem, 1rem);
       background-color: color.$light-gray;
       overflow: scroll;
+
+      & > div {
+        z-index: 1000;
+        position: sticky;
+        top: 0;
+        & > button {
+          position: absolute;
+          cursor: pointer;
+          right: 0;
+          padding: 0.25em 1em;
+          background-color: color.$davys-grey;
+          border-style: none;
+          color: color.$cultured;
+          font-weight: bold;
+          transition: background-color 200ms;
+          transition: color 200ms;
+
+          &:hover {
+            background-color: color.$cultured;
+            color: color.$davys-grey;
+          }
+        }
+      }
+    }
+    &[data-id='response-header'] {
+      overflow: scroll;
+      font-size: functions.responsive_font(0.875rem, 1.25rem);
+      & > div {
+        display: flex;
+        justify-content: space-between;
+        & div {
+          padding: 0.5em 1em;
+          margin: 0.5em;
+          width: 100%;
+          @include helper.border-px-gray(2px);
+        }
+      }
     }
   }
 }
