@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from 'react';
+import React, { FC, useContext } from 'react';
 import { MainFunctionContext } from '../../MainFunctionContext';
 
 interface ResponseHeaderOptionProps {}
@@ -15,16 +15,13 @@ const renderHeaders = (response: Response) => {
 
   return responseHeaderItemList;
 };
-export const ResponseHeaderOption: FC<ResponseHeaderOptionProps> = ({
-  ...props
-}) => {
+export const ResponseHeaderOption: FC<
+  ResponseHeaderOptionProps & React.ComponentProps<'div'>
+> = ({ ...props }) => {
   const context = useContext(MainFunctionContext);
-  useEffect(() => {
-    console.log(context);
-  }, []);
 
   return (
-    <div {...props} data-id="response-header">
+    <div data-id="response-header" {...props}>
       {context && context.response && renderHeaders(context.response)}
     </div>
   );

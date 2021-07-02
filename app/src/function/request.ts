@@ -5,10 +5,12 @@ export const makeRequest = async (
   method: RequestMethodType,
   options?: ReqeustOptions,
   params?: ParamsType,
+  cred?: boolean,
 ) => {
   const response = await fetch(url, {
     method,
     headers: options && options.headers,
+    credentials: cred ? 'include' : 'omit',
   });
 
   return response;

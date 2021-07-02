@@ -1,8 +1,9 @@
-import PrismJs from 'prismjs';
+import Prism from 'prismjs';
 import React, { FC, useContext, useEffect, useRef, useState } from 'react';
 import { beautify } from '../../../../function/beautify';
 import { MainFunctionContext } from '../../MainFunctionContext';
 import '/assets/prism.css';
+
 type ResponseBodyOptionProps = {} & React.ComponentProps<'div'>;
 const useBody = () => {
   const context = useContext(MainFunctionContext);
@@ -32,14 +33,14 @@ export const ResponseBodyOption: FC<ResponseBodyOptionProps> = ({
             setBody(beautify(body, contentType));
           }}
         >
-          {'{}'}
+          {'{ }'}
         </button>
       </div>
-      <pre className="language-html">
+      <pre className={'language-js'}>
         {body && (
           <code
             dangerouslySetInnerHTML={{
-              __html: PrismJs.highlight(body, PrismJs.languages.js, 'js'),
+              __html: Prism.highlight(body, Prism.languages.js, 'js'),
             }}
           ></code>
         )}

@@ -1,9 +1,11 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useCallback, useMemo, useState } from 'react';
 import styles from './../../scss/tab.module.scss';
 import { TabHeader } from './TabHeader';
 
 export type TabItemsType = Array<{
-  [key: string]: (props: any) => JSX.Element;
+  [key: string]: <T extends React.ComponentProps<'div'>>(
+    props: T,
+  ) => JSX.Element;
 }>;
 interface TabProps {
   tabItems: TabItemsType;
@@ -22,15 +24,20 @@ export const Tab: FC<TabProps> = ({ tabItems }) => {
   const [currentTab, setCurrentTab] = useState<string>(
     () => Object.keys(tabItems[0])[0],
   );
+  const tabItemsMemo = useMemo(() => tabItems, []);
+  const changeTab = useCallback((key) => setCurrentTab(key), [setCurrentTab]);
+
   return (
     <div className={styles.tab}>
-      <TabHeader
-        tabItems={tabItems}
-        onClick={(key) => {
-          setCurrentTab(key);
-        }}
-      />
-      <div className={styles.tab__items}>{getSelelectedTab(currentTab)}</div>
+      <TabHeader tabItems={tabItemsMemo} onClick={changeTab} />
+      {tabItems.map((tabItem, index) => {
+        return Object.entries(tabItem).map(([key, value]) =>
+          value({
+            key: index,
+            style: { display: key === currentTab ? '' : 'none' },
+          }),
+        );
+      })}
     </div>
   );
 };

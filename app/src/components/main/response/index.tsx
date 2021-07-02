@@ -3,6 +3,7 @@ import React from 'react';
 import { Tab, TabItemsType } from '../../tab';
 import styles from './../../../scss/response.module.scss';
 import { ResponseBodyOption } from './body_option/ResponseBodyOption';
+import { ResponseCookieOption } from './cookie_option/ResponseCookieOption';
 import { ResponseHeaderOption } from './header_option/ResponseHeaderOption';
 
 const tabItems: TabItemsType = [
@@ -13,7 +14,10 @@ const tabItems: TabItemsType = [
   },
   {
     cookies: (props) => (
-      <div {...props} className={styles.response__item}></div>
+      <ResponseCookieOption
+        {...props}
+        className={styles.response__item}
+      ></ResponseCookieOption>
     ),
   },
   {

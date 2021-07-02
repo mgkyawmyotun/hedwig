@@ -3,5 +3,9 @@ import React from 'react';
 
 interface ParamOptionProps {}
 export const ParamOption: FC<ParamOptionProps> = (params) => {
-  return <div {...params} data-id="param"></div>;
+  return (
+    <div {...params} data-id="param">
+      <h1>Params</h1>
+    </div>
+  );
 };

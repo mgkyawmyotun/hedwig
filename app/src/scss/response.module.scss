@@ -66,5 +66,19 @@
         }
       }
     }
+    &[data-id='response-cookie'] {
+      overflow: scroll;
+      font-size: functions.responsive_font(0.875rem, 1.25rem);
+      & > div {
+        display: flex;
+        justify-content: space-between;
+        & div {
+          padding: 0.5em 1em;
+          margin: 0.5em;
+          width: 100%;
+          @include helper.border-px-gray(2px);
+        }
+      }
+    }
   }
 }
