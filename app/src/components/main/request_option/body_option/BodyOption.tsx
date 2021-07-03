@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { RequestHeader } from '../RequestHeader';
 
 interface BodyOptionProps {}
 function isEqual(prev: any, next: any) {
@@ -9,7 +10,12 @@ export const BodyOption: FC<BodyOptionProps & React.ComponentProps<'div'>> = (
 ) => {
   return (
     <div data-id="request-body" {...props}>
-      <h1>Body</h1>
+      <RequestHeader
+        headerText="Body"
+        onButtonClick={() => {
+          console.log('body ');
+        }}
+      />
     </div>
   );
 };

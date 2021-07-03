@@ -2,6 +2,35 @@
 @use 'font';
 @use 'functions';
 @use 'color';
+@mixin response-header {
+  & > div:first-child {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    & > h1 {
+      color: color.$davys-grey;
+      font-family: font.$righteous;
+      font-size: functions.responsive_font(0.875rem, 1.5rem);
+    }
+    & > button {
+      align-self: flex-end;
+      padding: 0.5em 2em;
+      font-size: responsive_font(0.875rem, 1.125rem);
+      font-family: font.$righteous;
+      border-style: none;
+      background-color: transparent;
+      cursor: pointer;
+      @include helper.border-px-gray(2px);
+      transition-property: background-color color;
+      transition-duration: 200ms;
+      &:hover {
+        background-color: color.$charleston-green;
+        color: color.$cultured;
+      }
+    }
+  }
+}
 .request_option_main {
   width: 85%;
 }
@@ -11,51 +40,17 @@
   //select by custom html property
   &[data-id='header'] {
     padding: 0.5em;
-    & > div:first-child {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-between;
-      align-items: center;
-      & > h1 {
-        color: color.$davys-grey;
-        font-family: font.$righteous;
-        font-size: functions.responsive_font(0.875rem, 1.5rem);
-      }
-      & > button {
-        align-self: flex-end;
-        padding: 0.5em 2em;
-        font-size: responsive_font(0.875rem, 1.125rem);
-        font-family: font.$righteous;
-        border-style: none;
-        background-color: transparent;
-        cursor: pointer;
-        @include helper.border-px-gray(2px);
-        transition-property: background-color color;
-        transition-duration: 200ms;
-        &:hover {
-          background-color: color.$charleston-green;
-          color: color.$cultured;
-        }
-      }
-    }
+    @include response-header;
   }
   &[data-id='request-body'] {
     padding: 0.5em;
     height: 25vh;
-    & > h1 {
-      color: color.$davys-grey;
-      font-family: font.$righteous;
-      font-size: functions.responsive_font(0.875rem, 1.5rem);
-    }
+    @include response-header;
   }
   &[data-id='param'] {
     padding: 0.5em;
     height: 25vh;
-    & > h1 {
-      color: color.$davys-grey;
-      font-family: font.$righteous;
-      font-size: functions.responsive_font(0.875rem, 1.5rem);
-    }
+    @include response-header;
   }
 }
 

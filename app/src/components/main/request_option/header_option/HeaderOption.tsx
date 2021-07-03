@@ -1,5 +1,6 @@
 import React, { FC, useContext, useState } from 'react';
 import { MainFunctionContext } from '../../MainFunctionContext';
+import { RequestHeader } from '../RequestHeader';
 import styles from './../../../../scss/requestoption.module.scss';
 import { HeaderItem, HeaderItemProps } from './HeaderItem';
 
@@ -19,17 +20,12 @@ export const HeaderOption: FC<HeaderOptionProps> = (params) => {
   );
   return (
     <div {...params} data-id="header">
-      <div>
-        <h1>Headers</h1>
-        <button
-          className={styles.header__button}
-          onClick={() => {
-            setHeaderItems((prev) => [...prev, { property: '', value: '' }]);
-          }}
-        >
-          Add
-        </button>
-      </div>
+      <RequestHeader
+        headerText="Headers"
+        onButtonClick={() => {
+          setHeaderItems((prev) => [...prev, { property: '', value: '' }]);
+        }}
+      />
       <div className={styles.header__options__items}>
         {headerItems.map((headerItem, index) => (
           <HeaderItem
