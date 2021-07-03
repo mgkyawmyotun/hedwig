@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import React from 'react';
+import { DropDown } from '../../../dropdown/DropDown';
 import { ContentEdiable } from '../../../utils/ContentEdiable';
 import { RequestItem } from '../RequestItem';
 import styles from './../../../../scss/requestoption.module.scss';
@@ -22,6 +23,7 @@ export const BodyItem: FC<BodyItemProps> = () => {
                 //       onChange(state.property, state.value);
               }}
             ></ContentEdiable>
+            <DropDown items={['File', 'Text']} />
           </div>
         }
         secondSlot={<div>Hello World</div>}

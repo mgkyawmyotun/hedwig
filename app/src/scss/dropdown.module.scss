@@ -1,0 +1,64 @@
+@use 'font';
+@use 'color';
+@use 'functions' as *;
+@use 'helper' as *;
+.dropdown {
+  width: 100%;
+  @include border-px-gray(2px);
+  border-right: none;
+  position: relative;
+  cursor: pointer;
+
+  font-family: font.$domine;
+  font-size: responsive_font(0.5rem, 1.25rem);
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    @include center-absolute-position;
+    border-left: 1px solid color.$light-gray;
+    height: 80%;
+  }
+  /** request method selector **/
+  & > div:first-child {
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    padding: 0.5em;
+    font-weight: 700;
+    & > svg {
+      width: 0.8em;
+      padding-left: 0.2em;
+    }
+    color: color.$davys-grey;
+  }
+  & > .dropdown__drawer {
+    position: absolute;
+    top: 80%;
+    left: -5%;
+    z-index: 1000;
+    background-color: color.$cultured-2;
+    font-size: responsive_font(0.5rem, 1.125rem);
+    @include border-px-gray;
+    padding: 1em;
+    transform-origin: top center;
+    transform: scale(0);
+    transition: transform;
+    transition-duration: 200ms;
+    & > li {
+      list-style: none;
+      padding: 0.2em 0;
+      color: color.$charleston-green;
+      &:hover {
+        color: color.$davys-grey;
+      }
+    }
+  }
+}
+.show {
+  transform: scale(1) !important;
+}
