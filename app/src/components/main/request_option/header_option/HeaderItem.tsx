@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { LongArrow } from '../../../../svg/LongArrow';
+import { RequestItem } from '../RequestItem';
 import styles from './../../../../scss/requestoption.module.scss';
 import { ContentEdiable } from './../../../utils/ContentEdiable';
 
@@ -18,32 +18,35 @@ export const HeaderItem: FC<HeaderItemProps> = ({
     value,
   });
   return (
-    <div className={styles.header__item}>
-      <div>
-        <ContentEdiable
-          defaultValue={property.length > 0 ? property : 'Property'}
-          maxSize={15}
-          onContentChange={(value) => {
-            if (value) {
-              setState((prev) => ({ ...prev, property: value }));
-            }
-            onChange(state.property, state.value);
-          }}
-        ></ContentEdiable>
-      </div>
-      <LongArrow />
-      <div>
-        <ContentEdiable
-          defaultValue={value.length > 0 ? value : 'Value'}
-          maxSize={25}
-          onContentChange={(value) => {
-            if (value) {
-              setState((prev) => ({ ...prev, value }));
-            }
-            onChange(state.property, state.value);
-          }}
-        ></ContentEdiable>
-      </div>
-    </div>
+    <RequestItem
+      firstSlot={
+        <div className={styles.header__item__first}>
+          <ContentEdiable
+            defaultValue={property.length > 0 ? property : 'Property'}
+            maxSize={15}
+            onContentChange={(value) => {
+              if (value) {
+                setState((prev) => ({ ...prev, property: value }));
+              }
+              onChange(state.property, state.value);
+            }}
+          ></ContentEdiable>
+        </div>
+      }
+      secondSlot={
+        <div className={styles.header__item__first}>
+          <ContentEdiable
+            defaultValue={value.length > 0 ? value : 'Value'}
+            maxSize={25}
+            onContentChange={(value) => {
+              if (value) {
+                setState((prev) => ({ ...prev, value }));
+              }
+              onChange(state.property, state.value);
+            }}
+          ></ContentEdiable>
+        </div>
+      }
+    />
   );
 };

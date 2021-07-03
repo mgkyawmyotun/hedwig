@@ -54,7 +54,23 @@
   }
 }
 
-.header__item {
+@mixin header__item__input {
+  & > input {
+    font-family: inherit;
+    font-size: functions.responsive_font(0.875rem, 1.125rem);
+    @include helper.content-editable(0.3em 0.6em, 1px, color.$davys-grey);
+  }
+}
+.header__item__first {
+  @include header__item__input();
+}
+.header__item__second {
+  @include header__item__input();
+}
+.body__item__first {
+  @include header__item__input();
+}
+.request__item {
   padding: 0.2em 1em;
   display: flex;
   justify-content: space-between;
@@ -65,11 +81,6 @@
     flex: 1 1;
     @include helper.border-px-gray(1px);
     padding: 0.2em 0.5em;
-    & > input {
-      font-family: inherit;
-      font-size: functions.responsive_font(0.875rem, 1.125rem);
-      @include helper.content-editable(0.3em 0.6em, 1px, color.$davys-grey);
-    }
   }
 
   & > svg {
@@ -81,11 +92,6 @@
     @include helper.border-px-gray(1px);
     padding: 0.2em 0.5em;
     flex: 3 1;
-    & > input {
-      font-family: inherit;
-      font-size: functions.responsive_font(0.875rem, 1.125rem);
-      @include helper.content-editable(0.3em 0.6em, 1px, color.$davys-grey);
-    }
   }
 }
 .header__options__items {

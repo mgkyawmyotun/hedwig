@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { RequestHeader } from '../RequestHeader';
+import { BodyItem } from './BodyItem';
 
 interface BodyOptionProps {}
 function isEqual(prev: any, next: any) {
@@ -16,6 +17,7 @@ export const BodyOption: FC<BodyOptionProps & React.ComponentProps<'div'>> = (
           console.log('body ');
         }}
       />
+      <BodyItem />
     </div>
   );
 };
