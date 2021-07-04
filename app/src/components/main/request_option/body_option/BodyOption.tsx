@@ -1,23 +1,46 @@
-import React, { FC } from 'react';
+import React, { FC, useContext, useState } from 'react';
+import { MainFunctionContext } from '../../MainFunctionContext';
 import { RequestHeader } from '../RequestHeader';
-import { BodyItem } from './BodyItem';
+import styles from './../../../../scss/requestoption.module.scss';
+import { BodyItem, BodyItemProps } from './BodyItem';
 
 interface BodyOptionProps {}
-function isEqual(prev: any, next: any) {
-  console.log('Hello');
-}
 export const BodyOption: FC<BodyOptionProps & React.ComponentProps<'div'>> = (
   props,
 ) => {
+  const context = useContext(MainFunctionContext);
+  const [bodyItems, setBodyItems] = useState<Omit<BodyItemProps, 'onChange'>[]>(
+    () =>
+      context &&
+      (context.options.body.map(([property, value]) => {
+        return { property, value };
+      }) as any),
+  );
   return (
-    <div data-id="request-body" {...props}>
+    <div data-id="body" {...props}>
       <RequestHeader
         headerText="Body"
         onButtonClick={() => {
-          console.log('body ');
+          setBodyItems((prev) => [...prev, { property: '', value: '' }]);
         }}
       />
-      <BodyItem />
+      <div className={styles.request__body__items}>
+        {bodyItems.map(({ property, value }, index) => (
+          <BodyItem
+            property={property}
+            value={value}
+            onChange={(property, value) => {
+              if (context) {
+                if (context.options.body[index]) {
+                  context.options.body[index] = [property, value];
+                  return;
+                }
+                context.options.body.push([property, value]);
+              }
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 };

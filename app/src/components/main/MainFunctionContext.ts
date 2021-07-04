@@ -5,8 +5,8 @@ import type { RequestMethodType } from './request/type';
 export type MainContextType = {
   url: string;
   method: RequestMethodType;
-  options?: ReqeustOptions;
-  params?: ParamsType;
+  options: ReqeustOptions;
+  params: ParamsType;
 
   response: Response | null;
   setResponse: React.Dispatch<React.SetStateAction<Response | null>>;

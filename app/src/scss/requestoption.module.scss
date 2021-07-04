@@ -42,14 +42,12 @@
     padding: 0.5em;
     @include response-header;
   }
-  &[data-id='request-body'] {
+  &[data-id='body'] {
     padding: 0.5em;
-    height: 25vh;
     @include response-header;
   }
   &[data-id='param'] {
     padding: 0.5em;
-    height: 25vh;
     @include response-header;
   }
 }
@@ -68,7 +66,32 @@
   @include header__item__input();
 }
 .body__item__first {
+  display: flex;
+  font-size: functions.responsive_font(0.875rem, 1.125rem);
   @include header__item__input();
+  & > div:last-child {
+    width: min-content;
+    padding: 0 !important;
+    & > div:first-child {
+      padding: 0.1em !important;
+    }
+    & > div:not(:first-child) {
+      padding: 0.5em !important;
+    }
+  }
+}
+.body__item__second {
+  @include header__item__input();
+
+  font-size: functions.responsive_font(0.875rem, 1rem);
+  & > label {
+    border: 1px solid #ccc;
+    cursor: pointer;
+    padding: 0.2em 0.5em;
+  }
+  & > input[type='file'] {
+    display: none;
+  }
 }
 .request__item {
   padding: 0.2em 1em;
@@ -95,6 +118,10 @@
   }
 }
 .header__options__items {
+  height: 20vh;
+  overflow-y: scroll;
+}
+.request__body__items {
   height: 20vh;
   overflow-y: scroll;
 }

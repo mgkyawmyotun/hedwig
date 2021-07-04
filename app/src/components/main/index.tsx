@@ -1,8 +1,9 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import styles from '../../scss/main.module.scss';
 import { Collection } from './collection';
 import { MainFunctionContext } from './MainFunctionContext';
 import { RequestForm } from './request';
+import type { RequestMethodType } from './request/type';
 import { RequestOptionMain } from './request_option';
 import { Response } from './response';
 
@@ -11,6 +12,7 @@ export const Main: FC = () => {
   const [headerOption, setHeaderOption] = useState<[string, string][]>([
     ['User-Agent', navigator.userAgent],
   ]);
+  const methodRef = useRef<RequestMethodType>('GET');
 
   return (
     <div className={styles.main}>
@@ -18,12 +20,13 @@ export const Main: FC = () => {
       <div className={styles.main__function}>
         <MainFunctionContext.Provider
           value={{
-            method: 'GET',
+            method: methodRef.current,
             url: '',
             response,
             setResponse,
-            options: { headers: headerOption, body: '' },
+            options: { headers: headerOption, body: [['', '']] },
             setHeaderOption,
+            params: [{ '': '' }],
           }}
         >
           <RequestForm />

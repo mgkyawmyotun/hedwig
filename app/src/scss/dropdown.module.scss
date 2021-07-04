@@ -3,7 +3,6 @@
 @use 'functions' as *;
 @use 'helper' as *;
 .dropdown {
-  width: 100%;
   @include border-px-gray(2px);
   border-right: none;
   position: relative;

@@ -1,6 +1,6 @@
 export type ReqeustOptions = {
   headers: [string, string][];
-  body: any;
+  body: [string, string | File][];
 };
 type ParamType = { [key: string]: string };
 export type ParamsType = [ParamType];
