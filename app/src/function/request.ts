@@ -18,7 +18,7 @@ export const makeRequest = async (
     return response;
   }
   let formData = new FormData();
-  options.body.forEach(([p, v]) => formData.append(p, v));
+  options.body.current.forEach(([p, v]) => formData.append(p, v));
   console.log(formData);
   const response = await fetch(url, {
     method,

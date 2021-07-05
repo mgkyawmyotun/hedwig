@@ -34,12 +34,12 @@ export const RequestForm: FC = () => {
         <SendButton
           onSend={async () => {
             if (context) {
-              console.log(context.method);
               context.url = URLValue;
               try {
                 const response = await makeRequest(
                   context.url,
-                  context.method,
+
+                  context.method.current,
                   context.options,
                   context.params,
                 );

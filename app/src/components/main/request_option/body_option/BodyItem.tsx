@@ -25,12 +25,12 @@ export const BodyItem: FC<BodyItemProps> = ({ property, value, onChange }) => {
         firstSlot={
           <div className={styles.body__item__first}>
             <ContentEdiable
-              defaultValue={property.length > 0 ? property : ' '}
+              defaultValue=""
               maxSize={15}
-              onContentChange={(value) => {
-                if (value) {
-                  setState((prev) => ({ ...prev, property: value }));
-                  onChange(state.property, state.value);
+              onContentChange={(property) => {
+                if (property) {
+                  onChange(property, state.value);
+                  setState((prev) => ({ ...prev, property }));
                 }
               }}
             ></ContentEdiable>
@@ -44,12 +44,12 @@ export const BodyItem: FC<BodyItemProps> = ({ property, value, onChange }) => {
           <div className={styles.body__item__second}>
             {type === 'Text' ? (
               <ContentEdiable
-                defaultValue=" "
+                defaultValue=""
                 maxSize={15}
                 onContentChange={(value) => {
                   if (value) {
                     setState((prev) => ({ ...prev, value }));
-                    onChange(state.property, state.value);
+                    onChange(state.property, value);
                   }
                 }}
               />
@@ -64,7 +64,7 @@ export const BodyItem: FC<BodyItemProps> = ({ property, value, onChange }) => {
                       const file = event.currentTarget.files[0];
                       if (file) {
                         setState((prev) => ({ ...prev, value: file }));
-                        onChange(state.property, state.value);
+                        onChange(state.property, file);
                       }
                     }
                   }}

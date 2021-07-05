@@ -24,7 +24,7 @@ export const ContentEdiable: FC<ContentEdiableProps> = ({
       onChange={(e) => {
         setValue(e.currentTarget.value);
         if (onContentChange) {
-          onContentChange(value);
+          onContentChange(e.currentTarget.value);
         }
       }}
       style={{ minWidth: 0, textOverflow: 'ellipsis' }}

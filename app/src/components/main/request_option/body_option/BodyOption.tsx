@@ -12,7 +12,7 @@ export const BodyOption: FC<BodyOptionProps & React.ComponentProps<'div'>> = (
   const [bodyItems, setBodyItems] = useState<Omit<BodyItemProps, 'onChange'>[]>(
     () =>
       context &&
-      (context.options.body.map(([property, value]) => {
+      (context.options.body.current.map(([property, value]) => {
         return { property, value };
       }) as any),
   );
@@ -29,13 +29,10 @@ export const BodyOption: FC<BodyOptionProps & React.ComponentProps<'div'>> = (
           <BodyItem
             property={property}
             value={value}
+            key={index + property + value}
             onChange={(property, value) => {
               if (context) {
-                if (context.options.body[index]) {
-                  context.options.body[index] = [property, value];
-                  return;
-                }
-                context.options.body.push([property, value]);
+                context.setBodyOption(property, value, index);
               }
             }}
           />
