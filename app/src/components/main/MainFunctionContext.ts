@@ -11,8 +11,9 @@ export type MainContextType = {
 
   response: Response | null;
   setResponse: React.Dispatch<React.SetStateAction<Response | null>>;
-  setHeaderOption: React.Dispatch<React.SetStateAction<[string, string][]>>;
+  setHeaderOption: (p: string, v: string, i: number) => void;
   setBodyOption: (p: string, v: string | File, i: number) => void;
+  setParamOption: (p: string, v: string, i: number) => void;
 };
 const MainFunctionContext = React.createContext<MainContextType | null>(null);
 MainFunctionContext.displayName = 'MainFunctionContext(RequestObject)';

@@ -11,7 +11,7 @@ export const makeRequest = async (
   if (method === 'GET') {
     const response = await fetch(url, {
       method,
-      headers: options.headers,
+      headers: options.headers.current,
       credentials: cred ? 'include' : 'omit',
     });
 
@@ -22,7 +22,7 @@ export const makeRequest = async (
   console.log(formData);
   const response = await fetch(url, {
     method,
-    headers: options.headers,
+    headers: options.headers.current,
     credentials: cred ? 'include' : 'omit',
     body: formData,
   });

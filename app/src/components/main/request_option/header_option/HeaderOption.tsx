@@ -12,8 +12,7 @@ export const HeaderOption: FC<HeaderOptionProps> = (params) => {
   >(
     () =>
       context &&
-      context.options &&
-      (context.options.headers.map(([property, value]) => ({
+      (context.options.headers.current.map(([property, value]) => ({
         property,
         value,
       })) as any),
@@ -33,14 +32,8 @@ export const HeaderOption: FC<HeaderOptionProps> = (params) => {
             value={headerItem.value}
             key={index}
             onChange={(property, value) => {
-              if (context && context.options) {
-                if (context.options.headers[index]) {
-                  const new_headeroptions = [...context.options.headers];
-                  new_headeroptions[index] = [property, value];
-                  context.setHeaderOption(new_headeroptions);
-                  return;
-                }
-                context.options.headers.push([property, value]);
+              if (context) {
+                context.setHeaderOption(property, value, index);
               }
             }}
           />

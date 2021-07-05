@@ -1,5 +1,9 @@
-import React, { FC, useRef, useState } from 'react';
-import type { bodyOptionType } from 'types/request';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import type {
+  bodyOptionType,
+  headerOptionType,
+  ParamType,
+} from 'types/request';
 import styles from '../../scss/main.module.scss';
 import { Collection } from './collection';
 import { MainFunctionContext } from './MainFunctionContext';
@@ -7,14 +11,17 @@ import { RequestForm } from './request';
 import type { RequestMethodType } from './request/type';
 import { RequestOptionMain } from './request_option';
 import { Response } from './response';
-
 export const Main: FC = () => {
   const [response, setResponse] = useState<Response | null>(null);
-  const [headerOption, setHeaderOption] = useState<[string, string][]>([
-    ['User-Agent', navigator.userAgent],
-  ]);
   const bodyOptionRef = useRef<bodyOptionType>([['', '']]);
   const methodRef = useRef<RequestMethodType>('GET');
+  const headerOptionRef = useRef<headerOptionType>([
+    ['User-Agent', navigator.userAgent],
+  ]);
+  const paramRef = useRef<ParamType>([['', '']]);
+  useEffect(() => {
+    console.log('Rerender');
+  });
   return (
     <div className={styles.main}>
       <Collection />
@@ -28,19 +35,25 @@ export const Main: FC = () => {
             url: '',
             response,
             setResponse,
-            options: { headers: headerOption, body: bodyOptionRef },
-            setHeaderOption,
-            params: [{ '': '' }],
+            options: { headers: headerOptionRef, body: bodyOptionRef },
+            setHeaderOption: (p, v, n) => {
+              setOption(headerOptionRef.current, p, v, n);
+            },
+            params: paramRef,
+            setParamOption: (p, v, n) => {
+              setOption(paramRef.current, p, v, n);
+            },
             setBodyOption: (
               property: string,
               value: string | File,
               index: number,
             ) => {
-              if (bodyOptionRef.current[index]) {
-                bodyOptionRef.current[index] = [property, value];
-                return;
-              }
-              bodyOptionRef.current.push([property, value]);
+              setOption<string, string | File>(
+                bodyOptionRef.current,
+                property,
+                value,
+                index,
+              );
             },
           }}
         >
@@ -52,3 +65,11 @@ export const Main: FC = () => {
     </div>
   );
 };
+
+function setOption<K, V>(option: any, property: K, value: V, index: number) {
+  if (option[index]) {
+    option[index] = [property, value];
+    return;
+  }
+  option.push([property, value]);
+}

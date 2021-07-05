@@ -24,11 +24,11 @@ export const HeaderItem: FC<HeaderItemProps> = ({
           <ContentEdiable
             defaultValue={property.length > 0 ? property : 'Property'}
             maxSize={15}
-            onContentChange={(value) => {
-              if (value) {
-                setState((prev) => ({ ...prev, property: value }));
+            onContentChange={(p) => {
+              if (p) {
+                setState((prev) => ({ ...prev, property: p }));
+                onChange(p, state.value);
               }
-              onChange(state.property, state.value);
             }}
           ></ContentEdiable>
         </div>
@@ -41,8 +41,8 @@ export const HeaderItem: FC<HeaderItemProps> = ({
             onContentChange={(value) => {
               if (value) {
                 setState((prev) => ({ ...prev, value }));
+                onChange(state.property, value);
               }
-              onChange(state.property, state.value);
             }}
           ></ContentEdiable>
         </div>
