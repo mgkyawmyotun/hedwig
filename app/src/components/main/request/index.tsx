@@ -34,11 +34,9 @@ export const RequestForm: FC = () => {
         <SendButton
           onSend={async () => {
             if (context) {
-              context.url = URLValue;
               try {
                 const response = await makeRequest(
-                  context.url,
-
+                  URLValue,
                   context.method.current,
                   context.options,
                   context.params,

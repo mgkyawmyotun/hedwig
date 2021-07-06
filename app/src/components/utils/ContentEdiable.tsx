@@ -23,6 +23,7 @@ export const ContentEdiable: FC<ContentEdiableProps> = ({
       onDoubleClick={() => setEditAble(true)}
       onChange={(e) => {
         setValue(e.currentTarget.value);
+
         if (onContentChange) {
           onContentChange(e.currentTarget.value);
         }
