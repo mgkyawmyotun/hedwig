@@ -28,12 +28,44 @@
         height: 100%;
         top: 0;
       }
+      & > pre:hover + div {
+        display: block;
+      }
 
       & > div {
         z-index: 1000;
         position: sticky;
         top: -10%;
-        & > button {
+        & > button:first-child {
+          display: none;
+          position: absolute;
+          cursor: pointer;
+          padding: 0.1em 0.8em;
+          background-color: color.$davys-grey;
+          border-style: none;
+          color: color.$cultured;
+          font-weight: bold;
+          transition: background-color 200ms;
+          transition: color 200ms;
+          left: 0;
+
+          &:hover {
+            background-color: color.$cultured;
+            color: color.$davys-grey;
+            & > svg {
+              fill: color.$davys-grey;
+            }
+          }
+          & > svg {
+            width: 1.25em;
+            height: 1.25em;
+            fill: color.$cultured;
+          }
+          & > svg[data-svg='green'] {
+            fill: rgb(51, 247, 116);
+          }
+        }
+        & > button:last-child {
           position: absolute;
           cursor: pointer;
           right: 0;

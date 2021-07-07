@@ -1,6 +1,9 @@
 import Prism from 'prismjs';
 import React, { FC, useContext, useEffect, useRef, useState } from 'react';
 import { beautify } from '../../../../function/beautify';
+import { CopyIcon } from '../../../../svg/Copy';
+import { GreenCheckIcon } from '../../../../svg/GreenCheck';
+import { copyToClipboard } from '../../../utils';
 import { MainFunctionContext } from '../../MainFunctionContext';
 import '/assets/prism.css';
 
@@ -24,10 +27,29 @@ export const ResponseBodyOption: FC<ResponseBodyOptionProps> = ({
   ...props
 }) => {
   const [body, setBody, contentType] = useBody();
+  const [showCopy, setShowCopy] = useState(false);
+  const [showGreenMark, setShowGreenMark] = useState(false);
 
   return (
-    <div {...props} data-id="response-body">
+    <div
+      {...props}
+      data-id="response-body"
+      onMouseLeave={() => setShowCopy(false)}
+    >
       <div>
+        <button
+          onClick={() => {
+            if (body) {
+              copyToClipboard(body);
+              setShowGreenMark(true);
+            }
+          }}
+          style={{ display: showCopy ? 'block' : 'none' }}
+          onMouseLeave={() => setShowGreenMark(false)}
+        >
+          {showGreenMark ? <GreenCheckIcon /> : <CopyIcon />}
+        </button>
+
         <button
           onClick={() => {
             setBody(beautify(body, contentType));
@@ -36,7 +58,11 @@ export const ResponseBodyOption: FC<ResponseBodyOptionProps> = ({
           {'{ }'}
         </button>
       </div>
-      <pre className={'language-js'}>
+      <pre
+        className={'language-js'}
+        onMouseOver={() => setShowCopy(true)}
+        // onMouseLeave={() => setShowCopy(false)}
+      >
         {body && (
           <code
             dangerouslySetInnerHTML={{

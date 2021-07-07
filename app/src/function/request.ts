@@ -12,7 +12,6 @@ export const makeRequest = async (
   cred?: boolean,
 ) => {
   // console.log(method);
-  console.log(params);
   if (params) {
     url = url + formatParams(params);
   }
