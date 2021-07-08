@@ -1,11 +1,11 @@
 import React, { FC, useContext } from 'react';
 import { DropDown } from '../../dropdown/DropDown';
-import { MainFunctionContext } from '../MainFunctionContext';
+import { RequestResponseContext } from '../RequestResponseContext';
 import type { RequestMethodType } from './type';
 interface RequestMethodProps {}
 const methodItems: RequestMethodType[] = ['GET', 'POST', 'PUT', 'DELETE'];
 export const RequestMethod: FC<RequestMethodProps> = () => {
-  const context = useContext(MainFunctionContext);
+  const context = useContext(RequestResponseContext);
   return (
     <DropDown
       items={methodItems}

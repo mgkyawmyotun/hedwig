@@ -2,14 +2,14 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import validator from 'validator';
 import { makeRequest } from '../../../function/request';
 import styles from '../../../scss/request.module.scss';
-import { MainFunctionContext } from '../MainFunctionContext';
+import { RequestResponseContext } from '../RequestResponseContext';
 import { RequestInput } from './RequestInput';
 import { RequestMethod } from './RequestMethod';
 import { SaveButton } from './SaveButton';
 import { SendButton } from './SendButton';
 
 export const RequestForm: FC = () => {
-  const context = useContext(MainFunctionContext);
+  const context = useContext(RequestResponseContext);
   const [URLValue, setURLValue] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(true);
   useEffect(() => {

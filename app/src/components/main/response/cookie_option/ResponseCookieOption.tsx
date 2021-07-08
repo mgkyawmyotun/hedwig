@@ -1,9 +1,9 @@
 import React, { FC, useContext, useEffect, useState } from 'react';
 import { makeRequest } from '../../../../function/request';
 import {
-  MainContextType,
-  MainFunctionContext,
-} from '../../MainFunctionContext';
+  RequestResponseContext,
+  RequestResponseContextType,
+} from '../../RequestResponseContext';
 
 interface ResponseCookieOptionProps {}
 
@@ -12,9 +12,15 @@ const renderCookies = async ({
   method,
   options,
   params,
-}: MainContextType) => {
+}: RequestResponseContextType) => {
   try {
-    const response = await makeRequest(url, method, options, params, true);
+    const response = await makeRequest(
+      url,
+      method.current,
+      options,
+      params,
+      true,
+    );
     const cookies = response.headers.get('Set-Cookie');
     return cookies ? <div>{cookies}</div> : <div>No Cookies</div>;
   } catch (error) {
@@ -24,7 +30,7 @@ const renderCookies = async ({
 export const ResponseCookieOption: FC<
   ResponseCookieOptionProps & React.ComponentProps<'div'>
 > = ({ ...props }) => {
-  const context = useContext(MainFunctionContext);
+  const context = useContext(RequestResponseContext);
   const [cookie, setCookie] = useState<JSX.Element>(<div></div>);
   useEffect(() => {
     if (context) {

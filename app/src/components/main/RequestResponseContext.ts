@@ -1,8 +1,8 @@
 import React from 'react';
-import type { ParamsType, ReqeustOptions } from './../../../types/request.d';
+import type { ParamsType, ReqeustOptions } from '../../../types/request';
 import type { RequestMethodType } from './request/type';
 
-export type MainContextType = {
+export type RequestResponseContextType = {
   url: string;
   method: React.MutableRefObject<RequestMethodType>;
   setMethod: (value: RequestMethodType) => void;
@@ -15,7 +15,8 @@ export type MainContextType = {
   setBodyOption: (p: string, v: string | File, i: number) => void;
   setParamOption: (p: string, v: string, i: number) => void;
 };
-const MainFunctionContext = React.createContext<MainContextType | null>(null);
-MainFunctionContext.displayName = 'MainFunctionContext(RequestObject)';
+const RequestResponseContext =
+  React.createContext<RequestResponseContextType | null>(null);
+RequestResponseContext.displayName = 'RequestResponseContext(RequestObject)';
 
-export { MainFunctionContext };
+export { RequestResponseContext };

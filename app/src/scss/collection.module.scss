@@ -2,10 +2,21 @@
 @use 'functions' as fun;
 @use 'font';
 @use 'color';
-
+@mixin hide_scroll_bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+}
 .collection {
   width: 100%;
   height: 100%;
+  max-width: 90vh;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+
+  @include hide_scroll_bar();
   @include border-px-gray(2px);
   padding: 0.5em 0.5em;
 
@@ -30,7 +41,10 @@
 
   & > .collection__item {
     width: 100%;
-    margin: 1em auto;
+    &:first-child {
+      margin: 1em auto;
+    }
+    margin: 0.25em auto;
     padding: 0.2em;
     @include border-px-gray(1px);
     height: auto;

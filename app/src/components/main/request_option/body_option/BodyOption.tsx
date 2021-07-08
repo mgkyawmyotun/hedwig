@@ -1,5 +1,5 @@
 import React, { FC, useContext, useState } from 'react';
-import { MainFunctionContext } from '../../MainFunctionContext';
+import { RequestResponseContext } from '../../RequestResponseContext';
 import { RequestHeader } from '../RequestHeader';
 import styles from './../../../../scss/requestoption.module.scss';
 import { BodyItem, BodyItemProps } from './BodyItem';
@@ -8,7 +8,7 @@ interface BodyOptionProps {}
 export const BodyOption: FC<BodyOptionProps & React.ComponentProps<'div'>> = (
   props,
 ) => {
-  const context = useContext(MainFunctionContext);
+  const context = useContext(RequestResponseContext);
   const [bodyItems, setBodyItems] = useState<Omit<BodyItemProps, 'onChange'>[]>(
     () =>
       context &&

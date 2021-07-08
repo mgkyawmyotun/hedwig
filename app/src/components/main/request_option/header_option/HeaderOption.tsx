@@ -1,12 +1,12 @@
 import React, { FC, useContext, useState } from 'react';
-import { MainFunctionContext } from '../../MainFunctionContext';
+import { RequestResponseContext } from '../../RequestResponseContext';
 import { RequestHeader } from '../RequestHeader';
 import styles from './../../../../scss/requestoption.module.scss';
 import { HeaderItem, HeaderItemProps } from './HeaderItem';
 
 interface HeaderOptionProps {}
 export const HeaderOption: FC<HeaderOptionProps> = (params) => {
-  const context = useContext(MainFunctionContext);
+  const context = useContext(RequestResponseContext);
   const [headerItems, setHeaderItems] = useState<
     Omit<HeaderItemProps, 'onChange'>[]
   >(

@@ -6,9 +6,9 @@ import type {
 } from 'types/request';
 import styles from '../../scss/main.module.scss';
 import { Collection } from './collection';
-import { MainFunctionContext } from './MainFunctionContext';
 import { RequestForm } from './request';
 import type { RequestMethodType } from './request/type';
+import { RequestResponseContext } from './RequestResponseContext';
 import { RequestOptionMain } from './request_option';
 import { Response } from './response';
 export const Main: FC = () => {
@@ -26,7 +26,7 @@ export const Main: FC = () => {
     <div className={styles.main}>
       <Collection />
       <div className={styles.main__function}>
-        <MainFunctionContext.Provider
+        <RequestResponseContext.Provider
           value={{
             method: methodRef,
             setMethod: (value) => {
@@ -60,7 +60,7 @@ export const Main: FC = () => {
           <RequestForm />
           <RequestOptionMain />
           <Response />
-        </MainFunctionContext.Provider>
+        </RequestResponseContext.Provider>
       </div>
     </div>
   );

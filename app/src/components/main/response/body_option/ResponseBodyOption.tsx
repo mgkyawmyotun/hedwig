@@ -4,12 +4,12 @@ import { beautify } from '../../../../function/beautify';
 import { CopyIcon } from '../../../../svg/Copy';
 import { GreenCheckIcon } from '../../../../svg/GreenCheck';
 import { copyToClipboard } from '../../../utils';
-import { MainFunctionContext } from '../../MainFunctionContext';
+import { RequestResponseContext } from '../../RequestResponseContext';
 import '/assets/prism.css';
 
 type ResponseBodyOptionProps = {} & React.ComponentProps<'div'>;
 const useBody = () => {
-  const context = useContext(MainFunctionContext);
+  const context = useContext(RequestResponseContext);
   const [body, setBody] = useState<string>();
   const contentType = useRef<string | null>(null);
   useEffect(() => {

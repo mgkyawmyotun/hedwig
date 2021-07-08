@@ -1,5 +1,5 @@
 import React, { FC, useContext, useState } from 'react';
-import { MainFunctionContext } from '../../MainFunctionContext';
+import { RequestResponseContext } from '../../RequestResponseContext';
 import type { HeaderItemProps } from '../header_option/HeaderItem';
 import { RequestHeader } from '../RequestHeader';
 import styles from './../../../../scss/requestoption.module.scss';
@@ -7,7 +7,7 @@ import { ParamItem } from './ParamItem';
 
 interface ParamOptionProps {}
 export const ParamOption: FC<ParamOptionProps> = (params) => {
-  const context = useContext(MainFunctionContext);
+  const context = useContext(RequestResponseContext);
   const [paramItems, setParamItems] = useState<
     Omit<HeaderItemProps, 'onChange'>[]
   >(

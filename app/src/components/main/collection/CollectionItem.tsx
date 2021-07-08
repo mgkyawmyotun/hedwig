@@ -3,8 +3,15 @@ import { ArrowIcon, ArrowType } from '../../../svg/ArrowIcon';
 import styles from './../../../scss/collection.module.scss';
 import { ContentEdiable } from './../../utils/ContentEdiable';
 import { RequestItem } from './RequestItem';
-interface CollectionItemProps {}
-export const CollectionItem: FC<CollectionItemProps> = () => {
+interface CollectionItemProps {
+  name: string;
+  onItemChange: (name: string) => void;
+}
+
+export const CollectionItem: FC<CollectionItemProps> = ({
+  name,
+  onItemChange,
+}) => {
   const [arrowType, setArrowType] = useState<ArrowType>(ArrowType.UP);
   const [showItem, setShowItem] = useState<boolean>(false);
 
@@ -12,8 +19,11 @@ export const CollectionItem: FC<CollectionItemProps> = () => {
     <div className={styles.collection__item}>
       <div>
         <ContentEdiable
-          defaultValue="collection name"
+          defaultValue={name}
           maxSize={10}
+          onContentChange={(value) => {
+            value && onItemChange(value);
+          }}
         ></ContentEdiable>
         <ArrowIcon
           type={arrowType}
@@ -27,11 +37,6 @@ export const CollectionItem: FC<CollectionItemProps> = () => {
       </div>
       {showItem && (
         <div className={[styles.collection__item__request_items].join('')}>
-          <RequestItem />
-          <RequestItem />
-          <RequestItem />
-          <RequestItem />
-          <RequestItem />
           <RequestItem />
         </div>
       )}
