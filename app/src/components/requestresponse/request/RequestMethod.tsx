@@ -1,6 +1,6 @@
 import React, { FC, useContext } from 'react';
+import { RequestResponseContext } from '../../../context/RequestResponseContext';
 import { DropDown } from '../../dropdown/DropDown';
-import { RequestResponseContext } from '../RequestResponseContext';
 import type { RequestMethodType } from './type';
 interface RequestMethodProps {}
 const methodItems: RequestMethodType[] = ['GET', 'POST', 'PUT', 'DELETE'];

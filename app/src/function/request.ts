@@ -1,5 +1,5 @@
+import type { RequestMethodType } from '../components/requestresponse/request/type';
 import type { ParamsType, ReqeustOptions } from './../../types/request.d';
-import type { RequestMethodType } from './../components/main/request/type';
 function formatParams(params: ParamsType) {
   const formParams = params.current.map(([p, v]) => `${p}=${v}&`).join('');
   return '?' + formParams.substring(0, formParams.length - 1);

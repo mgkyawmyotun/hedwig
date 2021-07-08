@@ -1,10 +1,10 @@
 import Prism from 'prismjs';
 import React, { FC, useContext, useEffect, useRef, useState } from 'react';
+import { RequestResponseContext } from '../../../../context/RequestResponseContext';
 import { beautify } from '../../../../function/beautify';
 import { CopyIcon } from '../../../../svg/Copy';
 import { GreenCheckIcon } from '../../../../svg/GreenCheck';
 import { copyToClipboard } from '../../../utils';
-import { RequestResponseContext } from '../../RequestResponseContext';
 import '/assets/prism.css';
 
 type ResponseBodyOptionProps = {} & React.ComponentProps<'div'>;

@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react';
-import { RequestResponseContext } from '../../RequestResponseContext';
+import { RequestResponseContext } from '../../../../context/RequestResponseContext';
 
 interface ResponseHeaderOptionProps {}
 const renderHeaders = (response: Response) => {

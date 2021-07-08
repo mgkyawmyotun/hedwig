@@ -1,6 +1,6 @@
 import React from 'react';
-import type { ParamsType, ReqeustOptions } from '../../../types/request';
-import type { RequestMethodType } from './request/type';
+import type { ParamsType, ReqeustOptions } from '../../types/request';
+import type { RequestMethodType } from '../components/requestresponse/request/type';
 
 export type RequestResponseContextType = {
   url: string;

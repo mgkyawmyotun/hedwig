@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
+import { ContentEdiable } from '../../../utils/ContentEdiable';
 import { RequestItem } from '../RequestItem';
 import styles from './../../../../scss/requestoption.module.scss';
-import { ContentEdiable } from './../../../utils/ContentEdiable';
 
 export interface HeaderItemProps {
   property: string;

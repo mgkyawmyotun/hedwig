@@ -1,9 +1,9 @@
 import React, { FC, useContext, useEffect, useState } from 'react';
-import { makeRequest } from '../../../../function/request';
 import {
   RequestResponseContext,
   RequestResponseContextType,
-} from '../../RequestResponseContext';
+} from '../../../../context/RequestResponseContext';
+import { makeRequest } from '../../../../function/request';
 
 interface ResponseCookieOptionProps {}
 

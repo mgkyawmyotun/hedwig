@@ -1,8 +1,8 @@
 import React, { FC, useContext, useEffect, useState } from 'react';
 import validator from 'validator';
+import { RequestResponseContext } from '../../../context/RequestResponseContext';
 import { makeRequest } from '../../../function/request';
 import styles from '../../../scss/request.module.scss';
-import { RequestResponseContext } from '../RequestResponseContext';
 import { RequestInput } from './RequestInput';
 import { RequestMethod } from './RequestMethod';
 import { SaveButton } from './SaveButton';
