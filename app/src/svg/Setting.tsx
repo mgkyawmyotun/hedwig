@@ -1,9 +1,11 @@
 import type { FC } from 'react';
 import React from 'react';
-export const Setting: FC = () => {
+
+export const Setting: FC<React.ComponentProps<'svg'>> = (props) => {
   return (
     <>
       <svg
+        {...props}
         width="1.75em"
         viewBox="0 0 66 48"
         xmlns="http://www.w3.org/2000/svg"

@@ -37,7 +37,7 @@ export const CollectionItem: FC<CollectionItemProps> = ({
       </div>
       {showItem && (
         <div className={[styles.collection__item__request_items].join('')}>
-          <RequestItem />
+          <RequestItem name={'reandomGet'} />
         </div>
       )}
     </div>
