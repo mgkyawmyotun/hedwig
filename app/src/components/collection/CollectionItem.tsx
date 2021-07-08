@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
-import { ArrowIcon, ArrowType } from '../../../svg/ArrowIcon';
-import styles from './../../../scss/collection.module.scss';
-import { ContentEdiable } from './../../utils/ContentEdiable';
+import { ArrowIcon, ArrowType } from '../../svg/ArrowIcon';
+import { ContentEdiable } from '../utils/ContentEdiable';
+import styles from './../../scss/collection.module.scss';
 import { RequestItem } from './RequestItem';
 interface CollectionItemProps {
   name: string;

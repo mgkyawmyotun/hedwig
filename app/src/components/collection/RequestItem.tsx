@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
-import styles from './../../../scss/collection.module.scss';
-import { Arrow } from './../../../svg/Arrow';
+import { Arrow } from '../../svg/Arrow';
+import styles from './../../scss/collection.module.scss';
 
 interface RequestItemProps {}
 export const RequestItem: FC<RequestItemProps> = () => {

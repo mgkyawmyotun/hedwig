@@ -1,5 +1,5 @@
 import React from 'react';
-import { Main } from './components/main';
+import { Main } from './components/Main';
 import { NavBar } from './components/NavBar';
 import './scss/index.scss';
 interface AppProps {}

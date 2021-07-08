@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import styles from './../../../scss/collection.module.scss';
+import styles from './../../scss/collection.module.scss';
 import { CollectionItem } from './CollectionItem';
 export const Collection: FC = () => {
   const [collectionItems, setCollectionItems] = useState<{ name: string }[]>(

@@ -8,7 +8,6 @@ export type RequestResponseContextType = {
   setMethod: (value: RequestMethodType) => void;
   options: ReqeustOptions;
   params: ParamsType;
-
   response: Response | null;
   setResponse: React.Dispatch<React.SetStateAction<Response | null>>;
   setHeaderOption: (p: string, v: string, i: number) => void;
