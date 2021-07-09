@@ -1,4 +1,6 @@
 @use 'color';
+@use 'font';
+@use 'functions' as *;
 @mixin border-px-gray($px: 1px) {
   border: #{$px} solid color.$light-gray;
 }
@@ -39,5 +41,47 @@
   background-color: transparent;
 }
 
-@mixin botton-style {
+@mixin button-primary($padding: 0.5em 1em) {
+  height: 100%;
+  font-size: responsive_font(0.875rem, 1.125rem);
+  font-family: font.$righteous;
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 0.2em;
+  padding: #{$padding};
+  @include border-px-gray(2px);
+  transition-property: background-color color;
+  transition-duration: 200ms;
+  color: color.$davys-grey;
+  &:hover {
+    background-color: color.$charleston-green;
+    color: color.$cultured;
+  }
+  &:disabled {
+    cursor: default;
+    color: color.$light-gray;
+    &:hover {
+      background-color: initial;
+      color: color.$light-gray;
+    }
+  }
+}
+@mixin button-secondary($padding: 0.5em 1em) {
+  height: 100%;
+  font-size: responsive_font(0.875rem, 1.125rem);
+  font-family: font.$righteous;
+  padding: #{$padding};
+  border-style: none;
+  cursor: pointer;
+  margin-left: 0.1em;
+  @include border-px-gray(2px);
+  transition-property: background-color color;
+  transition-duration: 200ms;
+  background-color: color.$light-gray;
+  color: color.$davys-grey;
+  &:hover {
+    background-color: transparent;
+    color: color.$davys-grey;
+  }
 }

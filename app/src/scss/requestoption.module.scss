@@ -15,19 +15,7 @@
     }
     & > button {
       align-self: flex-end;
-      padding: 0.5em 2em;
-      font-size: responsive_font(0.875rem, 1.125rem);
-      font-family: font.$righteous;
-      border-style: none;
-      background-color: transparent;
-      cursor: pointer;
-      @include helper.border-px-gray(2px);
-      transition-property: background-color color;
-      transition-duration: 200ms;
-      &:hover {
-        background-color: color.$charleston-green;
-        color: color.$cultured;
-      }
+      @include helper.button-primary($padding: 0.2em 1.5em);
     }
   }
 }

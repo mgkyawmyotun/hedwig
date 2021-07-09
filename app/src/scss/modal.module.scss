@@ -4,23 +4,36 @@
 .modal {
   z-index: 1010;
   position: fixed;
-  width: 80vw;
-  height: 80vh;
+  max-width: 80vw;
+  max-height: 80vh;
   max-width: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(255, 255, 255);
-  padding: 1em 1em;
+  background-color: color.$cultured;
+  padding: 1em 2em;
   display: flex;
   flex-flow: column nowrap;
-  & > .modal__close_button {
-    font-family: font.$righteous;
-    font-size: responsive_font(1.5rem, 3rem);
-    cursor: pointer;
-    align-self: flex-end;
+  & > div {
+    display: flex;
+    flex-flow: row nowrap;
+
+    justify-content: space-between;
+    align-items: center;
+    & > .modal__close_button {
+      width: 2em;
+      height: 2em;
+      cursor: pointer;
+      align-self: flex-end;
+    }
+    & > .modal__title {
+      color: color.$davys-grey;
+      font-family: font.$righteous;
+      font-size: responsive_font(0.875rem, 1rem);
+    }
   }
   & > .modal__main {
+    flex: 1 1;
     padding: 1em 1em;
   }
 }

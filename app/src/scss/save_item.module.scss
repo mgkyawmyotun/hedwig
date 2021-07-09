@@ -1,0 +1,25 @@
+@use 'color';
+@use 'font';
+@use 'helper' as *;
+.save {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+.save__main {
+  height: 80%;
+  width: 100%;
+  background-color: color.$cultured-2;
+}
+
+.save__buttons {
+  display: flex;
+  justify-content: space-evenly;
+
+  & > button:first-child {
+    @include button-primary($padding: 0.5em 0.5em);
+  }
+  & > button:last-child {
+    @include button-secondary($padding: 0.5em 1em);
+  }
+}

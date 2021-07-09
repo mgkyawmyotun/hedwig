@@ -24,6 +24,7 @@ export const NavBar: FC<NavBarProps> = () => {
           size={{ width: 80, height: 80 }}
           onModalClose={() => setModal(false)}
           closeOnOutsideClick={false}
+          title="Setting"
         >
           <div>Hello World</div>
         </Modal>
