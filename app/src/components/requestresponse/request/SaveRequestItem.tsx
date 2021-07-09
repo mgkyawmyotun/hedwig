@@ -1,14 +1,25 @@
-import type { FC } from 'react';
-import React from 'react';
+import React, { FC, useContext } from 'react';
+import { MainContext } from '../../../context/MainContext';
 import styles from '../../../scss/save_item.module.scss';
 interface SaveRequestItemProps {}
-const SaveMainPick = () => <div className={styles.save__main__pick}></div>;
 export const SaveRequestItem: FC<SaveRequestItemProps> = () => {
+  const context = useContext(MainContext);
+  const SaveMainPick = () => (
+    <div className={styles.save__main__pick}>
+      {context &&
+        context.collections.current.map((collection, index) => (
+          <div key={index}>{collection.name}</div>
+        ))}
+    </div>
+  );
   return (
     <div className={styles.save}>
       <div className={styles.save__main}>
-        <SaveMainPick />
-        <div>HEllo World</div>
+        {context && context.collections.current.length === 0 ? (
+          <div className={styles.no_item}>No Collection / Create One</div>
+        ) : (
+          <SaveMainPick />
+        )}
       </div>
       <div className={styles.save__buttons}>
         <button>Create</button>

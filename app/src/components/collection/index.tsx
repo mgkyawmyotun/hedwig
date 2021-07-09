@@ -1,11 +1,16 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
+import { MainContext } from '../../context/MainContext';
 import styles from './../../scss/collection.module.scss';
 import { CollectionItem } from './CollectionItem';
 export const Collection: FC = () => {
   const [collectionItems, setCollectionItems] = useState<{ name: string }[]>(
     [],
   );
+  const context = useContext(MainContext);
   const addNewCollection = () => {
+    if (context) {
+      context.createCollection('collection name', -1);
+    }
     setCollectionItems((prev) => [...prev, { name: 'collection item' }]);
   };
   return (
@@ -19,7 +24,11 @@ export const Collection: FC = () => {
           <CollectionItem
             name={name}
             key={index}
-            onItemChange={(value) => {}}
+            onItemChange={(value) => {
+              if (context) {
+                context.createCollection(value, index);
+              }
+            }}
           />
         ))}
     </div>

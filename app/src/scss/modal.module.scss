@@ -11,13 +11,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: color.$cultured;
-  padding: 1em 2em;
+  padding: 1em 1.25em;
   display: flex;
   flex-flow: column nowrap;
-  & > div {
+  & > div:first-child {
     display: flex;
     flex-flow: row nowrap;
-
     justify-content: space-between;
     align-items: center;
     & > .modal__close_button {
@@ -34,7 +33,7 @@
   }
   & > .modal__main {
     flex: 1 1;
-    padding: 1em 1em;
+    padding: 0.25em 0.5em;
   }
 }
 .modal__overlay {

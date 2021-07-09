@@ -85,3 +85,11 @@
     color: color.$davys-grey;
   }
 }
+
+@mixin hide_scroll_bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+}

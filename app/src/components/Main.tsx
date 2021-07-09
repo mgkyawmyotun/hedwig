@@ -1,6 +1,5 @@
-import type { FC } from 'react';
-import React from 'react';
-import { MainContext } from '../context/MainContext';
+import React, { FC, useRef } from 'react';
+import { CollectionsType, MainContext } from '../context/MainContext';
 import styles from '../scss/main.module.scss';
 import { Collection } from './collection';
 import { RequestResponse } from './requestresponse';
@@ -9,10 +8,26 @@ import { RequestResponse } from './requestresponse';
 function saveItem() {}
 interface MainProps {}
 export const Main: FC<MainProps> = () => {
+  const collections = useRef<CollectionsType>([]);
+  function createCollection(name: string, index: number) {
+    if (collections.current[index]) {
+      const current = collections.current[index];
+      collections.current[index] = {
+        name,
+        items: current.items,
+      };
+      return;
+    }
+    collections.current.push({ name, items: [] });
+  }
   return (
     <div className={styles.main}>
       <MainContext.Provider
-        value={{ collection: [{ items: [], name: '' }], saveItem: saveItem }}
+        value={{
+          collections,
+          saveItem,
+          createCollection,
+        }}
       >
         <Collection />
         <div className={styles.main__function}>
