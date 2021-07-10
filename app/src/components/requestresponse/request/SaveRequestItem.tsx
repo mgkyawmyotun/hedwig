@@ -8,7 +8,9 @@ export const SaveRequestItem: FC<SaveRequestItemProps> = () => {
     <div className={styles.save__main__pick}>
       {context &&
         context.collections.current.map((collection, index) => (
-          <div key={index}>{collection.name}</div>
+          <li key={index} onClick={(e) => {}}>
+            {collection.name}
+          </li>
         ))}
     </div>
   );

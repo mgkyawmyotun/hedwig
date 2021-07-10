@@ -10,9 +10,32 @@
 .save__main {
   background-color: color.$cultured-2;
   flex-grow: 1;
-  @include hide_scroll_bar();
+
   display: flex;
   justify-content: center;
+
+  height: clamp(80px, 20vh, 200px);
+  overflow: scroll;
+  @include hide_scroll_bar();
+
+  & > .save__main__pick {
+    padding: 1em;
+    margin-right: auto;
+    font-family: font.$domine;
+    font-weight: bold;
+    font-size: responsive_font(0.875rem, 1.8rem);
+    & > li {
+      list-style: none;
+      cursor: pointer;
+      padding: 0.2em 1em;
+      margin: 0.5em 0em;
+      border: 2px solid color.$davys-grey;
+      &:hover {
+        background-color: color.$cultured;
+        padding-left: 2em;
+      }
+    }
+  }
 }
 
 .save__buttons {
