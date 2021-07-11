@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import type { RequestItemType } from 'src/context/MainContext';
 import { ArrowIcon, ArrowType } from '../../svg/ArrowIcon';
 import { ContentEdiable } from '../utils/ContentEdiable';
 import styles from './../../scss/collection.module.scss';
@@ -6,10 +7,13 @@ import { RequestItem } from './RequestItem';
 interface CollectionItemProps {
   name: string;
   onItemChange: (name: string) => void;
+  items: RequestItemType[];
 }
 
 export const CollectionItem: FC<CollectionItemProps> = ({
   name,
+  items,
+
   onItemChange,
 }) => {
   const [arrowType, setArrowType] = useState<ArrowType>(ArrowType.UP);
@@ -37,7 +41,10 @@ export const CollectionItem: FC<CollectionItemProps> = ({
       </div>
       {showItem && (
         <div className={[styles.collection__item__request_items].join('')}>
-          <RequestItem name={'reandomGet'} />
+          {items &&
+            items.map((item, index) => (
+              <RequestItem name={item.name} key={index + item.name} />
+            ))}
         </div>
       )}
     </div>

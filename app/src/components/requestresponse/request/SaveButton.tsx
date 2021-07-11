@@ -1,11 +1,9 @@
-import React, { FC, useContext, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Modal } from '../../../components/modal';
-import { MainContext } from '../../../context/MainContext';
 import styles from '../../../scss/request.module.scss';
 import { SaveRequestItem } from './SaveRequestItem';
 
 export const SaveButton: FC = () => {
-  const context = useContext(MainContext);
   const [show, setShow] = useState(false);
   return (
     <>
@@ -24,7 +22,7 @@ export const SaveButton: FC = () => {
         closeOnOutsideClick={true}
         title="SaveRequest"
       >
-        <SaveRequestItem />
+        <SaveRequestItem onClose={() => setShow(false)} />
       </Modal>
     </>
   );

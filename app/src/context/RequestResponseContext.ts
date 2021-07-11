@@ -3,7 +3,7 @@ import type { ParamsType, ReqeustOptions } from '../../types/request';
 import type { RequestMethodType } from '../components/requestresponse/request/type';
 
 export type RequestResponseContextType = {
-  name?: string;
+  name: string;
   url: string;
   method: React.MutableRefObject<RequestMethodType>;
   setMethod: (value: RequestMethodType) => void;

@@ -1,8 +1,17 @@
-import React, { FC, useContext, useMemo, useRef, useState } from 'react';
+import React, {
+  FC,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { MainContext } from '../../../context/MainContext';
 import { RequestResponseContext } from '../../../context/RequestResponseContext';
 import styles from '../../../scss/save_item.module.scss';
-interface SaveRequestItemProps {}
+interface SaveRequestItemProps {
+  onClose: () => void;
+}
 function SaveRequestName({
   name,
   onChange,
@@ -21,13 +30,22 @@ function SaveRequestName({
     </div>
   );
 }
-export const SaveRequestItem: FC<SaveRequestItemProps> = () => {
+export const SaveRequestItem: FC<SaveRequestItemProps> = ({ onClose }) => {
   const context = useContext(MainContext);
   const contextReq = useContext(RequestResponseContext);
   const [collectionValue, setCollectionValue] = useState<number>();
   const oldLi = useRef<EventTarget & HTMLLIElement>();
   const [next, showNext] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
+  useEffect(() => {
+    return () => {};
+  });
+  function reset() {
+    showNext(false);
+    setName('');
+    oldLi.current = undefined;
+    setName('');
+  }
   const SaveMainPick = useMemo(() => {
     return (
       <div className={styles.save__main__pick}>
@@ -88,9 +106,14 @@ export const SaveRequestItem: FC<SaveRequestItemProps> = () => {
             </button>
             <button
               onClick={() => {
-                if (context && contextReq) {
+                if (context && contextReq && collectionValue != undefined) {
                   const { method, params, options, url } = contextReq;
-                  context.saveItem({ method, options, params, url, name });
+                  context.saveItem(
+                    { method, options, params, url, name },
+                    collectionValue,
+                  );
+                  onClose();
+                  reset();
                 }
               }}
               disabled={name.length <= 0}

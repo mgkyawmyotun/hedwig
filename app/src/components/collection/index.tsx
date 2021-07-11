@@ -19,11 +19,13 @@ export const Collection: FC = () => {
         <h1>Collection</h1>
         <div onClick={addNewCollection}>+</div>
       </div>
-      {collectionItems &&
+      {context &&
+        collectionItems &&
         collectionItems.map(({ name }, index) => (
           <CollectionItem
             name={name}
             key={index}
+            items={context.collections.current[index].items}
             onItemChange={(value) => {
               if (context) {
                 context.createCollection(value, index);
