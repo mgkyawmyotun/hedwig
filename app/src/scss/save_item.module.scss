@@ -30,10 +30,6 @@
       padding: 0.2em 1em;
       margin: 0.5em 0em;
       border: 2px solid color.$davys-grey;
-      &:hover {
-        background-color: color.$cultured;
-        padding-left: 2em;
-      }
     }
   }
 }
@@ -56,4 +52,26 @@
   align-self: center;
   font-family: font.$domine;
   font-size: responsive_font(0.875rem, 1.5rem);
+}
+
+.pick {
+  background-color: color.$davys-grey;
+  padding-left: 2em;
+  color: color.$cultured;
+}
+
+.save__name {
+  font-family: font.$righteous;
+  font-size: responsive_font(0.875rem, 1.8rem);
+  display: flex;
+  align-items: center;
+  & > input {
+    padding: 0.5em 1em;
+    font-family: font.$domine;
+    font-size: 1.005em;
+    &::placeholder {
+      font-family: font.$righteous;
+      font-size: 1.2em;
+    }
+  }
 }

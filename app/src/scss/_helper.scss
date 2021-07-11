@@ -59,7 +59,7 @@
     color: color.$cultured;
   }
   &:disabled {
-    cursor: default;
+    cursor: not-allowed;
     color: color.$light-gray;
     &:hover {
       background-color: initial;
@@ -83,6 +83,15 @@
   &:hover {
     background-color: transparent;
     color: color.$davys-grey;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: color.$light-gray;
+    color: color.$davys-grey;
+    &:hover {
+      background-color: color.$light-gray;
+      color: color.$davys-grey;
+    }
   }
 }
 
