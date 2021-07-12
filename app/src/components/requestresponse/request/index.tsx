@@ -14,11 +14,15 @@ export const RequestForm: FC = () => {
   const [isValid, setIsValid] = useState<boolean>(true);
   useEffect(() => {
     if (URLValue.length > 0) {
+      // if (URLValue.includes('http://') || URLValue.includes('https://')) {
       const isValidURL = validator.isURL(URLValue, {
         require_tld: false,
         require_host: true,
+        require_valid_protocol: true,
+        require_protocol: true,
       });
       setIsValid(isValidURL);
+      // }
     }
   }, [URLValue]);
 
@@ -33,6 +37,10 @@ export const RequestForm: FC = () => {
       <div>
         <SendButton
           onSend={async () => {
+            if (URLValue.length == 0) {
+              setIsValid(false);
+              return;
+            }
             if (context) {
               try {
                 const response = await makeRequest(
@@ -49,7 +57,7 @@ export const RequestForm: FC = () => {
           }}
           disabled={!isValid}
         />
-        <SaveButton />
+        <SaveButton disabled={!isValid} />
       </div>
     </div>
   );

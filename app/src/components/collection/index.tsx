@@ -26,6 +26,7 @@ export const Collection: FC = () => {
             name={name}
             key={index}
             items={context.collections.current[index].items}
+            cIndex={index}
             onItemChange={(value) => {
               if (context) {
                 context.createCollection(value, index);

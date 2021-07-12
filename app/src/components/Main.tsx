@@ -9,16 +9,10 @@ import { Collection } from './collection';
 import { RequestResponse } from './requestresponse';
 // import {} from 'main'
 
-function useForceUpdate() {
-  const [count, setCount] = useState(0);
-  return () => {
-    setCount((prev) => prev + 1);
-  };
-}
 interface MainProps {}
 export const Main: FC<MainProps> = () => {
   const collections = useRef<CollectionsType>([]);
-  const forceUpdate = useForceUpdate();
+  const [requestItem, setRequestItem] = useState<RequestItemType>();
   function createCollection(name: string, index: number) {
     if (collections.current[index]) {
       const current = collections.current[index];
@@ -31,10 +25,18 @@ export const Main: FC<MainProps> = () => {
     collections.current.push({ name, items: [] });
   }
   function saveItem(item: RequestItemType, collectionIndex: number) {
-    if (collections.current[collectionIndex]) {
-      collections.current[collectionIndex].items.push(item);
+    isCollectionExits(collectionIndex);
+    collections.current[collectionIndex].items.push(item);
+  }
+  function isCollectionExits(index: number) {
+    if (!collections.current[index]) {
+      return;
     }
-    // forceUpdate();
+  }
+  function onClickRequestItem(itemIndex: number, collectionIndex: number) {
+    isCollectionExits(collectionIndex);
+    const item = collections.current[collectionIndex].items[itemIndex];
+    setRequestItem(item);
   }
   return (
     <div className={styles.main}>
@@ -43,11 +45,12 @@ export const Main: FC<MainProps> = () => {
           collections,
           saveItem,
           createCollection,
+          onClickRequestItem,
         }}
       >
         <Collection />
         <div className={styles.main__function}>
-          <RequestResponse />
+          <RequestResponse requestItem={requestItem} />
         </div>
       </MainContext.Provider>
     </div>

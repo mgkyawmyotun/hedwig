@@ -11,6 +11,7 @@ type MainContextType = {
   collections: React.MutableRefObject<CollectionsType>;
   saveItem: (item: RequestItemType, collectionIndex: number) => void;
   createCollection: (name: string, index: number) => void;
+  onClickRequestItem: (itemIndex: number, collectionIndex: number) => void;
 };
 const MainContext = React.createContext<MainContextType | null>(null);
 MainContext.displayName = 'MainContext';

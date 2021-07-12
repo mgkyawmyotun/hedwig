@@ -3,7 +3,9 @@ import { Modal } from '../../../components/modal';
 import styles from '../../../scss/request.module.scss';
 import { SaveRequestItem } from './SaveRequestItem';
 
-export const SaveButton: FC = () => {
+export const SaveButton: FC<React.ComponentPropsWithoutRef<'button'>> = (
+  props,
+) => {
   const [show, setShow] = useState(false);
   return (
     <>
@@ -12,6 +14,7 @@ export const SaveButton: FC = () => {
         onClick={() => {
           setShow((prev) => !prev);
         }}
+        {...props}
       >
         Save
       </button>

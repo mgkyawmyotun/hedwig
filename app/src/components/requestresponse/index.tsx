@@ -1,4 +1,5 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import type { RequestItemType } from 'src/context/MainContext';
 import type {
   bodyOptionType,
   headerOptionType,
@@ -9,23 +10,39 @@ import { RequestForm } from './request';
 import type { RequestMethodType } from './request/type';
 import { RequestOptionMain } from './request_option';
 import { Response } from './response';
-export const RequestResponse: FC = () => {
+interface RequestResponseType {
+  requestItem?: RequestItemType;
+}
+export const RequestResponse: FC<RequestResponseType> = ({ requestItem }) => {
   const [response, setResponse] = useState<Response | null>(null);
-  const bodyOptionRef = useRef<bodyOptionType>([['', '']]);
-  const methodRef = useRef<RequestMethodType>('GET');
-  const headerOptionRef = useRef<headerOptionType>([
-    ['User-Agent', navigator.userAgent],
-  ]);
-  const paramRef = useRef<ParamType>([['', '']]);
+  const bodyOptionRef = useRef<bodyOptionType>(
+    (requestItem && requestItem.options.body.current) || [['', '']],
+  );
+  const methodRef = useRef<RequestMethodType>(
+    (requestItem && requestItem.method.current) || 'GET',
+  );
+  const headerOptionRef = useRef<headerOptionType>(
+    (requestItem && requestItem.options.headers.current) || [
+      ['User-Agent', navigator.userAgent],
+    ],
+  );
+  const paramRef = useRef<ParamType>(
+    (requestItem && requestItem.params.current) || [['', '']],
+  );
+  useEffect(() => {
+    console.log(requestItem, ' Request Item');
+    console.log(methodRef);
+  });
   return (
     <>
       <RequestResponseContext.Provider
         value={{
+          name: '',
           method: methodRef,
           setMethod: (value) => {
             methodRef.current = value;
           },
-          url: '',
+          url: (requestItem && requestItem.url) || '',
           response,
           setResponse,
           options: { headers: headerOptionRef, body: bodyOptionRef },
