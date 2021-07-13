@@ -7,7 +7,6 @@ import type {
 } from 'types/request';
 import { RequestResponseContext } from '../../context/RequestResponseContext';
 import { RequestForm } from './request';
-import type { RequestMethodType } from './request/type';
 import { RequestOptionMain } from './request_option';
 import { Response } from './response';
 interface RequestResponseType {

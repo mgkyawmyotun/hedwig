@@ -1,4 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: CollectionState = { collections: [] };
-createSlice({ initialState, name: 'collection', reducers: {} });
+const initialState: CollectionsStateType = { collections: [] };
+export const collectionsSlice = createSlice({
+  initialState,
+  name: 'collections',
+  reducers: {
+    addCollection: (state, action: PayloadAction<string>) => {
+      state.collections.push({ items: [], name: action.payload });
+    },
+  },
+});
