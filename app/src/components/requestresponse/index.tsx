@@ -14,12 +14,12 @@ interface RequestResponseType {
   requestItem?: RequestItemType;
 }
 export const RequestResponse: FC<RequestResponseType> = ({ requestItem }) => {
+  useEffect(() => {
+    console.log(requestItem);
+  }, [requestItem]);
   const [response, setResponse] = useState<Response | null>(null);
   const bodyOptionRef = useRef<bodyOptionType>(
     (requestItem && requestItem.options.body.current) || [['', '']],
-  );
-  const methodRef = useRef<RequestMethodType>(
-    (requestItem && requestItem.method.current) || 'GET',
   );
   const headerOptionRef = useRef<headerOptionType>(
     (requestItem && requestItem.options.headers.current) || [
@@ -29,19 +29,23 @@ export const RequestResponse: FC<RequestResponseType> = ({ requestItem }) => {
   const paramRef = useRef<ParamType>(
     (requestItem && requestItem.params.current) || [['', '']],
   );
+  const [method, setMethod] = useState<RequestMethodType>(
+    (requestItem && requestItem.method) || 'GET',
+  );
   useEffect(() => {
     console.log(requestItem, ' Request Item');
-    console.log(methodRef);
-  });
+    console.log(method);
+    if (requestItem) {
+      setMethod(requestItem.method);
+    }
+  }, [requestItem]);
   return (
     <>
       <RequestResponseContext.Provider
         value={{
           name: '',
-          method: methodRef,
-          setMethod: (value) => {
-            methodRef.current = value;
-          },
+          method,
+          setMethod,
           url: (requestItem && requestItem.url) || '',
           response,
           setResponse,

@@ -45,7 +45,7 @@ export const RequestForm: FC = () => {
               try {
                 const response = await makeRequest(
                   URLValue,
-                  context.method.current,
+                  context.method,
                   context.options,
                   context.params,
                 );

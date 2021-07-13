@@ -36,6 +36,8 @@ export const Main: FC<MainProps> = () => {
   function onClickRequestItem(itemIndex: number, collectionIndex: number) {
     isCollectionExits(collectionIndex);
     const item = collections.current[collectionIndex].items[itemIndex];
+    console.log('Click');
+    console.log(item);
     setRequestItem(item);
   }
   return (

@@ -6,8 +6,13 @@ import { DropDownDrawer } from './DropDownDrawer';
 interface DropDownProps<T> {
   items: T[];
   onChange?: (item: T) => void;
+  defaultItem?: T | null;
 }
-export const DropDown = <T,>({ items, onChange }: DropDownProps<T>) => {
+export const DropDown = <T,>({
+  items,
+  onChange,
+  defaultItem,
+}: DropDownProps<T>) => {
   const [arrowType, setArrowType] = useState<ArrowType>(ArrowType.UP);
   const [showDrawer, setShowDrawer] = useState<boolean>(false);
   const [item, setItem] = useState<T>(items[0]);
@@ -20,7 +25,7 @@ export const DropDown = <T,>({ items, onChange }: DropDownProps<T>) => {
   return (
     <div className={styles.dropdown}>
       <div onClick={switchItem}>
-        <span>{item}</span>
+        <span>{defaultItem || item}</span>
         <ArrowIcon type={arrowType} />
       </div>
       <DropDownDrawer

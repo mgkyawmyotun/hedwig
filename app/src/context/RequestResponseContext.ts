@@ -5,8 +5,8 @@ import type { RequestMethodType } from '../components/requestresponse/request/ty
 export type RequestResponseContextType = {
   name: string;
   url: string;
-  method: React.MutableRefObject<RequestMethodType>;
-  setMethod: (value: RequestMethodType) => void;
+  method: RequestMethodType;
+  setMethod: React.Dispatch<React.SetStateAction<RequestMethodType>>;
   options: ReqeustOptions;
   params: ParamsType;
   response: Response | null;

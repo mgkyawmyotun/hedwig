@@ -9,6 +9,7 @@ export const RequestMethod: FC<RequestMethodProps> = () => {
   return (
     <DropDown
       items={methodItems}
+      defaultItem={context && context.method}
       onChange={(item: RequestMethodType) => {
         if (context) {
           context.setMethod(item);
