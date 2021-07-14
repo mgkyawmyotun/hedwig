@@ -1,7 +1,5 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import validator from 'validator';
-import { RequestResponseContext } from '../../../context/RequestResponseContext';
-import { makeRequest } from '../../../function/request';
 import { urlAdded } from '../../../redux/features/requestresponse/requestresponseSlice';
 import { useAppDispatch } from '../../../redux/hooks';
 import styles from '../../../scss/request.module.scss';
@@ -11,7 +9,6 @@ import { SaveButton } from './SaveButton';
 import { SendButton } from './SendButton';
 
 export const RequestForm: FC = () => {
-  const context = useContext(RequestResponseContext);
   const [URLValue, setURLValue] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(true);
   const dispatch = useAppDispatch();
@@ -47,19 +44,6 @@ export const RequestForm: FC = () => {
               return;
             }
             dispatch(urlAdded(URLValue));
-            if (context) {
-              try {
-                const response = await makeRequest(
-                  URLValue,
-                  context.method,
-                  context.options,
-                  context.params,
-                );
-                context.setResponse(response);
-              } catch (error) {
-                console.log(error);
-              }
-            }
           }}
           disabled={!isValid}
         />

@@ -1,3 +1,4 @@
+import React, { useMemo } from 'react';
 export interface OptionsProps {
   property: string;
   value: string;
@@ -13,14 +14,18 @@ export function MapOptions<
   Propety,
   Value,
 >(C: any, values: T, change: (p: Propety, v: Value, index: number) => void) {
-  return values.map(([p, v], index) => (
-    <C
-      property={p}
-      value={v}
-      key={index + p + v}
-      onChange={(p: Propety, v: Value) => {
-        change(p, v, index);
-      }}
-    />
-  ));
+  const iUpdateWhenCLengthChange = useMemo(() => {
+    console.log(values);
+    return values.map(([p, v], index) => (
+      <C
+        property={p}
+        value={v}
+        key={index + p + v}
+        onChange={(p: Propety, v: Value) => {
+          change(p, v, index);
+        }}
+      />
+    ));
+  }, [values.length]);
+  return iUpdateWhenCLengthChange;
 }

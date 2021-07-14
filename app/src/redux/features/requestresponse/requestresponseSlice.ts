@@ -2,9 +2,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialState: RequestResponseStateType = {
   url: '',
   method: 'GET',
-  options: { body: [], headers: [] },
   params: [],
   response: undefined,
+  body: [],
+  headers: [],
 };
 const requestresponseSlice = createSlice({
   initialState,
@@ -24,11 +25,7 @@ const requestresponseSlice = createSlice({
         state,
         { payload }: PayloadAction<{ header: HeaderType; index: number }>,
       ) => {
-        setOption<HeaderType>(
-          state.options.headers,
-          payload.header,
-          payload.index,
-        );
+        setOption<HeaderType>(state.headers, payload.header, payload.index);
       },
       prepare: (header: HeaderType, index: number) => {
         return {
@@ -41,7 +38,7 @@ const requestresponseSlice = createSlice({
         state,
         { payload }: PayloadAction<{ body: BodyType; index: number }>,
       ) => {
-        setOption<BodyType>(state.options.body, payload.body, payload.index);
+        setOption<BodyType>(state.body, payload.body, payload.index);
       },
       prepare: (body: BodyType, index: number) => {
         return {
@@ -76,3 +73,5 @@ function setOption<V>(arrays: any, data: V, index: number) {
   }
   arrays.push(data);
 }
+
+console.log('');

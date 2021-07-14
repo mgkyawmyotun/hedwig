@@ -10,7 +10,7 @@ interface BodyOptionProps {}
 export const BodyOption: FC<BodyOptionProps & React.ComponentProps<'div'>> = (
   props,
 ) => {
-  const body = useAppSelector((state) => state.requestresponse.options.body);
+  const body = useAppSelector((state) => state.requestresponse.body);
   const dispatch = useAppDispatch();
   return (
     <div data-id="body" {...props}>
@@ -21,7 +21,7 @@ export const BodyOption: FC<BodyOptionProps & React.ComponentProps<'div'>> = (
         }}
       />
       <div className={styles.request__body__items}>
-        {MapOptions(BodyItem, body, (p: string, v: string | File, i) => {
+        {MapOptions(BodyItem, body, (p: string, v: string, i) => {
           dispatch(bodyAdded([p, v], i));
         })}
       </div>

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { paramAdded } from '../../../../redux/features/requestresponse/requestresponseSlice';
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks';
 import { RequestHeader } from '../RequestHeader';
-import { addNew } from '../share';
+import { addNew, MapOptions } from '../share';
 import styles from './../../../../scss/requestoption.module.scss';
 import { ParamItem } from './ParamItem';
 
@@ -19,16 +19,13 @@ export const ParamOption: FC<ParamOptionProps> = (props) => {
         }}
       />
       <div className={styles.param__options__items}>
-        {params.map(([property, value], index) => (
-          <ParamItem
-            property={property}
-            value={value}
-            key={index}
-            onChange={(property, value) => {
-              dispatch(paramAdded([property, value], index));
-            }}
-          />
-        ))}
+        {MapOptions<typeof params, ParamType, string, string>(
+          ParamItem,
+          params,
+          (p, v, i) => {
+            dispatch(paramAdded([p, v], i));
+          },
+        )}
       </div>
     </div>
   );

@@ -58,11 +58,7 @@ export const ResponseBodyOption: FC<ResponseBodyOptionProps> = ({
           {'{ }'}
         </button>
       </div>
-      <pre
-        className={'language-js'}
-        onMouseOver={() => setShowCopy(true)}
-        // onMouseLeave={() => setShowCopy(false)}
-      >
+      <pre className={'language-js'} onMouseOver={() => setShowCopy(true)}>
         {body && (
           <code
             dangerouslySetInnerHTML={{

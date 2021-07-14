@@ -14,13 +14,7 @@ const renderCookies = async ({
   params,
 }: RequestResponseContextType) => {
   try {
-    const response = await makeRequest(
-      url,
-      method.current,
-      options,
-      params,
-      true,
-    );
+    const response = await makeRequest(url, method, options, params, true);
     const cookies = response.headers.get('Set-Cookie');
     return cookies ? <div>{cookies}</div> : <div>No Cookies</div>;
   } catch (error) {

@@ -3,15 +3,11 @@
 
 type URLType = string;
 type ParamType = [string, string];
-type BodyType = [string, string | File];
+type BodyType = [string, string];
 type HeaderType = [string, string];
-type BodyOptionsType = BodyType[];
 type HeaderOptionsType = HeaderType[];
+type BodyOptionsType = BodyType[];
 
-type RequestOptionsType = {
-  headers: HeaderOptionsType;
-  body: BodyOptionsType;
-};
 type RequestMethodType = 'GET' | 'POST' | 'DELETE' | 'PUT';
 type ParamsType = ParamType[];
 type CollectionType = {
@@ -25,5 +21,6 @@ type RequestResponseStateType = {
   method: RequestMethodType;
   response: Response | undefined;
   params: ParamsType;
-  options: RequestOptionsType;
+  body: BodyOptionsType;
+  headers: HeaderOptionsType;
 };

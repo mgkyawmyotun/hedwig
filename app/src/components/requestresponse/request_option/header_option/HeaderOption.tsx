@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
 import { headerAdded } from '../../../../redux/features/requestresponse/requestresponseSlice';
-import { useAppSelector } from '../../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks';
 import { RequestHeader } from '../RequestHeader';
 import { addNew, MapOptions } from '../share';
 import styles from './../../../../scss/requestoption.module.scss';
@@ -9,10 +8,8 @@ import { HeaderItem } from './HeaderItem';
 
 interface HeaderOptionProps {}
 export const HeaderOption: FC<HeaderOptionProps> = (props) => {
-  const headers = useAppSelector(
-    (state) => state.requestresponse.options.headers,
-  );
-  const dispatch = useDispatch();
+  const headers = useAppSelector((state) => state.requestresponse.headers);
+  const dispatch = useAppDispatch();
   return (
     <div {...props} data-id="header">
       <RequestHeader

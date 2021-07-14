@@ -25,7 +25,7 @@ export const BodyItem: FC<BodyItemProps> = ({ property, value, onChange }) => {
         firstSlot={
           <div className={styles.body__item__first}>
             <ContentEdiable
-              defaultValue=""
+              defaultValue={property}
               maxSize={15}
               onContentChange={(property) => {
                 if (property) {
@@ -44,7 +44,7 @@ export const BodyItem: FC<BodyItemProps> = ({ property, value, onChange }) => {
           <div className={styles.body__item__second}>
             {type === 'Text' ? (
               <ContentEdiable
-                defaultValue=""
+                defaultValue={value}
                 maxSize={15}
                 onContentChange={(value) => {
                   if (value) {
@@ -63,8 +63,9 @@ export const BodyItem: FC<BodyItemProps> = ({ property, value, onChange }) => {
                     if (event.currentTarget.files) {
                       const file = event.currentTarget.files[0];
                       if (file) {
-                        setState((prev) => ({ ...prev, value: file }));
-                        onChange(state.property, file);
+                        const fileURL = URL.createObjectURL(file);
+                        setState((prev) => ({ ...prev, value: fileURL }));
+                        onChange(state.property, fileURL);
                       }
                     }
                   }}
