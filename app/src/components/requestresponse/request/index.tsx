@@ -46,8 +46,8 @@ export const RequestForm: FC = () => {
               setIsValid(false);
               return;
             }
-            dispatch(makeRequest());
             dispatch(urlAdded(URLValue));
+            dispatch(makeRequest());
           }}
           disabled={!isValid}
         />

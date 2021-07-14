@@ -13,9 +13,6 @@ export const makeRequest = createAsyncThunk<Response, void>(
     const { headers, url, body, method, params } =
       getState() as typeof initialState;
     const response = await fetch(url, { headers, method });
-    const response_json = await response.json();
-    const response_headers = response.headers;
-    const response_body = response.clone().body;
     return response;
   },
 );
