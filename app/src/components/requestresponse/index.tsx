@@ -1,11 +1,13 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
-import type { RequestItemType } from 'src/context/MainContext';
+import { Provider } from 'react-redux';
 import type {
   bodyOptionType,
   headerOptionType,
   ParamType,
 } from 'types/request';
+import type { RequestItemType } from '../../context/MainContext';
 import { RequestResponseContext } from '../../context/RequestResponseContext';
+import { store } from '../../redux/store';
 import { RequestForm } from './request';
 import { RequestOptionMain } from './request_option';
 import { Response } from './response';
@@ -70,9 +72,11 @@ export const RequestResponse: FC<RequestResponseType> = ({ requestItem }) => {
           },
         }}
       >
-        <RequestForm />
-        <RequestOptionMain />
-        <Response />
+        <Provider store={store}>
+          <RequestForm />
+          <RequestOptionMain />
+          <Response />
+        </Provider>
       </RequestResponseContext.Provider>
     </>
   );

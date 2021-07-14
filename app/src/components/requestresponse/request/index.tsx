@@ -2,6 +2,8 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import validator from 'validator';
 import { RequestResponseContext } from '../../../context/RequestResponseContext';
 import { makeRequest } from '../../../function/request';
+import { urlAdded } from '../../../redux/features/requestresponse/requestresponseSlice';
+import { useAppDispatch } from '../../../redux/hooks';
 import styles from '../../../scss/request.module.scss';
 import { RequestInput } from './RequestInput';
 import { RequestMethod } from './RequestMethod';
@@ -12,6 +14,9 @@ export const RequestForm: FC = () => {
   const context = useContext(RequestResponseContext);
   const [URLValue, setURLValue] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(true);
+  const dispatch = useAppDispatch();
+  // const url = useAppSelector((state) => state.requestresponse.url);
+
   useEffect(() => {
     if (URLValue.length > 0) {
       // if (URLValue.includes('http://') || URLValue.includes('https://')) {
@@ -41,6 +46,7 @@ export const RequestForm: FC = () => {
               setIsValid(false);
               return;
             }
+            dispatch(urlAdded(URLValue));
             if (context) {
               try {
                 const response = await makeRequest(

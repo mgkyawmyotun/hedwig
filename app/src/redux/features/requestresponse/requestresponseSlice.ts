@@ -65,7 +65,7 @@ const requestresponseSlice = createSlice({
   },
 });
 
-export const { urlAdded, methodSwitched, paramAdded } =
+export const { urlAdded, methodSwitched, paramAdded, headerAdded, bodyAdded } =
   requestresponseSlice.actions;
 export default requestresponseSlice.reducer;
 

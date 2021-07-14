@@ -1,18 +1,18 @@
-import React, { FC, useContext } from 'react';
-import { RequestResponseContext } from '../../../context/RequestResponseContext';
+import React, { FC } from 'react';
+import { methodSwitched } from '../../../redux/features/requestresponse/requestresponseSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { DropDown } from '../../dropdown/DropDown';
 interface RequestMethodProps {}
 const methodItems: RequestMethodType[] = ['GET', 'POST', 'PUT', 'DELETE'];
 export const RequestMethod: FC<RequestMethodProps> = () => {
-  const context = useContext(RequestResponseContext);
+  const method = useAppSelector((state) => state.requestresponse.method);
+  const dispatch = useAppDispatch();
   return (
     <DropDown
       items={methodItems}
-      defaultItem={context && context.method}
+      defaultItem={method}
       onChange={(item: RequestMethodType) => {
-        if (context) {
-          context.setMethod(item);
-        }
+        dispatch(methodSwitched(item));
       }}
     />
   );

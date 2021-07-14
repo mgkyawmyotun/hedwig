@@ -1,41 +1,31 @@
-import React, { FC, useContext, useState } from 'react';
-import { RequestResponseContext } from '../../../../context/RequestResponseContext';
-import type { HeaderItemProps } from '../header_option/HeaderItem';
+import React, { FC } from 'react';
+import { paramAdded } from '../../../../redux/features/requestresponse/requestresponseSlice';
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks';
 import { RequestHeader } from '../RequestHeader';
+import { addNew } from '../share';
 import styles from './../../../../scss/requestoption.module.scss';
 import { ParamItem } from './ParamItem';
 
 interface ParamOptionProps {}
-export const ParamOption: FC<ParamOptionProps> = (params) => {
-  const context = useContext(RequestResponseContext);
-  const [paramItems, setParamItems] = useState<
-    Omit<HeaderItemProps, 'onChange'>[]
-  >(
-    () =>
-      context &&
-      (context.params.current.map(([property, value]) => ({
-        property,
-        value,
-      })) as any),
-  );
+export const ParamOption: FC<ParamOptionProps> = (props) => {
+  const params = useAppSelector((state) => state.requestresponse.params);
+  const dispatch = useAppDispatch();
   return (
-    <div {...params} data-id="param">
+    <div {...props} data-id="param">
       <RequestHeader
         headerText="Params"
         onButtonClick={() => {
-          setParamItems((prev) => [...prev, { property: '', value: '' }]);
+          dispatch(addNew(paramAdded));
         }}
       />
       <div className={styles.param__options__items}>
-        {paramItems.map((paramItem, index) => (
+        {params.map(([property, value], index) => (
           <ParamItem
-            property={paramItem.property}
-            value={paramItem.value}
+            property={property}
+            value={value}
             key={index}
             onChange={(property, value) => {
-              if (context) {
-                context.setParamOption(property, value, index);
-              }
+              dispatch(paramAdded([property, value], index));
             }}
           />
         ))}

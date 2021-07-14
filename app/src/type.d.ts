@@ -9,8 +9,8 @@ type BodyOptionsType = BodyType[];
 type HeaderOptionsType = HeaderType[];
 
 type RequestOptionsType = {
-  headers: headerOptionType;
-  body: bodyOptionType;
+  headers: HeaderOptionsType;
+  body: BodyOptionsType;
 };
 type RequestMethodType = 'GET' | 'POST' | 'DELETE' | 'PUT';
 type ParamsType = ParamType[];
@@ -18,9 +18,7 @@ type CollectionType = {
   name: string;
   items: [];
 };
-type CollectionsStateType = {
-  collections: CollectionType[];
-};
+type CollectionsStateType = CollectionType[];
 
 type RequestResponseStateType = {
   url: URLType;

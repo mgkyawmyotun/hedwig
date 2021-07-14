@@ -1,42 +1,29 @@
-import React, { FC, useContext, useState } from 'react';
-import { RequestResponseContext } from '../../../../context/RequestResponseContext';
+import React, { FC } from 'react';
+import { bodyAdded } from '../../../../redux/features/requestresponse/requestresponseSlice';
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks';
 import { RequestHeader } from '../RequestHeader';
+import { addNew, MapOptions } from '../share';
 import styles from './../../../../scss/requestoption.module.scss';
-import { BodyItem, BodyItemProps } from './BodyItem';
+import { BodyItem } from './BodyItem';
 
 interface BodyOptionProps {}
 export const BodyOption: FC<BodyOptionProps & React.ComponentProps<'div'>> = (
   props,
 ) => {
-  const context = useContext(RequestResponseContext);
-  const [bodyItems, setBodyItems] = useState<Omit<BodyItemProps, 'onChange'>[]>(
-    () =>
-      context &&
-      (context.options.body.current.map(([property, value]) => {
-        return { property, value };
-      }) as any),
-  );
+  const body = useAppSelector((state) => state.requestresponse.options.body);
+  const dispatch = useAppDispatch();
   return (
     <div data-id="body" {...props}>
       <RequestHeader
         headerText="Body"
         onButtonClick={() => {
-          setBodyItems((prev) => [...prev, { property: '', value: '' }]);
+          dispatch(addNew(bodyAdded));
         }}
       />
       <div className={styles.request__body__items}>
-        {bodyItems.map(({ property, value }, index) => (
-          <BodyItem
-            property={property}
-            value={value}
-            key={index + property + value}
-            onChange={(property, value) => {
-              if (context) {
-                context.setBodyOption(property, value, index);
-              }
-            }}
-          />
-        ))}
+        {MapOptions(BodyItem, body, (p: string, v: string | File, i) => {
+          dispatch(bodyAdded([p, v], i));
+        })}
       </div>
     </div>
   );

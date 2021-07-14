@@ -1,43 +1,34 @@
-import React, { FC, useContext, useState } from 'react';
-import { RequestResponseContext } from '../../../../context/RequestResponseContext';
+import React, { FC } from 'react';
+import { useDispatch } from 'react-redux';
+import { headerAdded } from '../../../../redux/features/requestresponse/requestresponseSlice';
+import { useAppSelector } from '../../../../redux/hooks';
 import { RequestHeader } from '../RequestHeader';
+import { addNew, MapOptions } from '../share';
 import styles from './../../../../scss/requestoption.module.scss';
-import { HeaderItem, HeaderItemProps } from './HeaderItem';
+import { HeaderItem } from './HeaderItem';
 
 interface HeaderOptionProps {}
-export const HeaderOption: FC<HeaderOptionProps> = (params) => {
-  const context = useContext(RequestResponseContext);
-  const [headerItems, setHeaderItems] = useState<
-    Omit<HeaderItemProps, 'onChange'>[]
-  >(
-    () =>
-      context &&
-      (context.options.headers.current.map(([property, value]) => ({
-        property,
-        value,
-      })) as any),
+export const HeaderOption: FC<HeaderOptionProps> = (props) => {
+  const headers = useAppSelector(
+    (state) => state.requestresponse.options.headers,
   );
+  const dispatch = useDispatch();
   return (
-    <div {...params} data-id="header">
+    <div {...props} data-id="header">
       <RequestHeader
         headerText="Headers"
         onButtonClick={() => {
-          setHeaderItems((prev) => [...prev, { property: '', value: '' }]);
+          dispatch(addNew(headerAdded));
         }}
       />
       <div className={styles.header__options__items}>
-        {headerItems.map((headerItem, index) => (
-          <HeaderItem
-            property={headerItem.property}
-            value={headerItem.value}
-            key={index}
-            onChange={(property, value) => {
-              if (context) {
-                context.setHeaderOption(property, value, index);
-              }
-            }}
-          />
-        ))}
+        {MapOptions<HeaderOptionsType, HeaderType, string, string>(
+          HeaderItem,
+          headers,
+          (p, v, i) => {
+            dispatch(headerAdded([p, v], i));
+          },
+        )}
       </div>
     </div>
   );
