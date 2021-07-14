@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialState: RequestResponseStateType = {
   url: '',
   method: 'GET',
@@ -7,6 +7,18 @@ const initialState: RequestResponseStateType = {
   body: [],
   headers: [],
 };
+export const makeRequest = createAsyncThunk<Response, void>(
+  'requestresponse/response',
+  async (arg, { getState }) => {
+    const { headers, url, body, method, params } =
+      getState() as typeof initialState;
+    const response = await fetch(url, { headers, method });
+    const response_json = await response.json();
+    const response_headers = response.headers;
+    const response_body = response.clone().body;
+    return response;
+  },
+);
 const requestresponseSlice = createSlice({
   initialState,
   name: 'requestresponse',
@@ -60,6 +72,11 @@ const requestresponseSlice = createSlice({
       },
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(makeRequest.fulfilled, (state, action) => {
+      state.response = action.payload;
+    });
+  },
 });
 
 export const { urlAdded, methodSwitched, paramAdded, headerAdded, bodyAdded } =
@@ -73,5 +90,3 @@ function setOption<V>(arrays: any, data: V, index: number) {
   }
   arrays.push(data);
 }
-
-console.log('');

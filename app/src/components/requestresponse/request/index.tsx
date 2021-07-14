@@ -1,6 +1,9 @@
 import React, { FC, useEffect, useState } from 'react';
 import validator from 'validator';
-import { urlAdded } from '../../../redux/features/requestresponse/requestresponseSlice';
+import {
+  makeRequest,
+  urlAdded,
+} from '../../../redux/features/requestresponse/requestresponseSlice';
 import { useAppDispatch } from '../../../redux/hooks';
 import styles from '../../../scss/request.module.scss';
 import { RequestInput } from './RequestInput';
@@ -43,6 +46,7 @@ export const RequestForm: FC = () => {
               setIsValid(false);
               return;
             }
+            dispatch(makeRequest());
             dispatch(urlAdded(URLValue));
           }}
           disabled={!isValid}
