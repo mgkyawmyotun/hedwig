@@ -1,5 +1,5 @@
-import React, { FC, useContext } from 'react';
-import { RequestResponseContext } from '../../../../context/RequestResponseContext';
+import React, { FC } from 'react';
+import { useAppSelector } from '../../../../redux/hooks';
 
 interface ResponseHeaderOptionProps {}
 const renderHeaders = (response: Response) => {
@@ -12,17 +12,15 @@ const renderHeaders = (response: Response) => {
       </div>,
     );
   }
-
   return responseHeaderItemList;
 };
 export const ResponseHeaderOption: FC<
   ResponseHeaderOptionProps & React.ComponentProps<'div'>
 > = ({ ...props }) => {
-  const context = useContext(RequestResponseContext);
-
+  const response = useAppSelector((state) => state.requestresponse.response);
   return (
     <div data-id="response-header" {...props}>
-      {context && context.response && renderHeaders(context.response)}
+      {response && renderHeaders(response)}
     </div>
   );
 };

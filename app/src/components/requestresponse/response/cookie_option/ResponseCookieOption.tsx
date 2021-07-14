@@ -1,39 +1,33 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
-import {
-  RequestResponseContext,
-  RequestResponseContextType,
-} from '../../../../context/RequestResponseContext';
-import { makeRequest } from '../../../../function/request';
+import React, { FC } from 'react';
+import { useAppSelector } from '../../../../redux/hooks';
 
 interface ResponseCookieOptionProps {}
 
-const renderCookies = async ({
-  url,
-  method,
-  options,
-  params,
-}: RequestResponseContextType) => {
-  try {
-    const response = await makeRequest(url, method, options, params, true);
-    const cookies = response.headers.get('Set-Cookie');
-    return cookies ? <div>{cookies}</div> : <div>No Cookies</div>;
-  } catch (error) {
-    return <div>No Cookie</div>;
+// const renderCookies = ({
+// }: RequestResponseContextType) => {
+//   try {
+//     const response = await makeRequest(url, method, options, params, true);
+//     const cookies = response.headers.get('Set-Cookie');
+//     return cookies ? <div>{cookies}</div> : <div>No Cookies</div>;
+//   } catch (error) {
+//     return <div>No Cookie</div>;
+//   }
+// };const renderHeaders = (response: Response) => {
+const renderCookies = (response: Response) => {
+  const cookies = response.headers.get('Set-Cookie');
+  console.log(cookies);
+  if (cookies) {
+    return <div>{cookies}</div>;
   }
+  return <div>No Cookie</div>;
 };
 export const ResponseCookieOption: FC<
   ResponseCookieOptionProps & React.ComponentProps<'div'>
 > = ({ ...props }) => {
-  const context = useContext(RequestResponseContext);
-  const [cookie, setCookie] = useState<JSX.Element>(<div></div>);
-  useEffect(() => {
-    if (context) {
-      renderCookies(context).then((x) => setCookie(x));
-    }
-  }, [context]);
+  const response = useAppSelector((state) => state.requestresponse.response);
   return (
     <div {...props} data-id="response-cookie">
-      {context && cookie}
+      {response && renderCookies(response)}
     </div>
   );
 };
