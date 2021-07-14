@@ -1,26 +1,26 @@
 import Prism from 'prismjs';
-import React, { FC, useContext, useEffect, useRef, useState } from 'react';
-import { RequestResponseContext } from '../../../../context/RequestResponseContext';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { beautify } from '../../../../function/beautify';
+import { useAppSelector } from '../../../../redux/hooks';
 import { CopyIcon } from '../../../../svg/Copy';
 import { GreenCheckIcon } from '../../../../svg/GreenCheck';
-import { copyToClipboard } from '../../../utils';
+import { copyToClipboard } from '../../../../utils';
 import '/assets/prism.css';
 
 type ResponseBodyOptionProps = {} & React.ComponentProps<'div'>;
 const useBody = () => {
-  const context = useContext(RequestResponseContext);
+  const response = useAppSelector((state) => state.requestresponse.response);
   const [body, setBody] = useState<string>();
   const contentType = useRef<string | null>(null);
   useEffect(() => {
-    if (context && context.response) {
-      const response = context.response.clone();
-      contentType.current = response.headers.get('Content-Type');
-      response.text().then((value) => {
+    if (response) {
+      const response_clone = response.clone();
+      contentType.current = response_clone.headers.get('Content-Type');
+      response_clone.text().then((value) => {
         setBody(value);
       });
     }
-  }, [context]);
+  }, [response]);
   return [body, setBody, contentType.current] as const;
 };
 export const ResponseBodyOption: FC<ResponseBodyOptionProps> = ({

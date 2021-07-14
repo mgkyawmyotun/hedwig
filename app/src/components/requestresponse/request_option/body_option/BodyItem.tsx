@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
+import { ContentEdiable } from '../../../contentEditable/ContentEdiable';
 import { DropDown } from '../../../dropdown/DropDown';
-import { ContentEdiable } from '../../../utils/ContentEdiable';
 import { RequestItem } from '../RequestItem';
 import styles from './../../../../scss/requestoption.module.scss';
 

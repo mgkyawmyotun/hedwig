@@ -1,4 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { formatParams } from '../../../utils';
+import type { RootState } from './../../store';
 const initialState: RequestResponseStateType = {
   url: '',
   method: 'GET',
@@ -7,15 +9,21 @@ const initialState: RequestResponseStateType = {
   body: [],
   headers: [],
 };
-export const makeRequest = createAsyncThunk<Response, void>(
-  'requestresponse/response',
-  async (arg, { getState }) => {
-    const { headers, url, body, method, params } =
-      getState() as typeof initialState;
-    const response = await fetch(url, { headers, method });
-    return response;
-  },
-);
+export const makeRequest = createAsyncThunk<
+  Response,
+  void,
+  { state: RootState }
+>('requestresponse/response', async (arg, { getState }) => {
+  console.log(getState());
+  const { headers, url, body, method, params } = getState().requestresponse;
+  let urlWithParams = '';
+
+  if (params) {
+    urlWithParams = url + formatParams(params);
+  }
+  const response = await fetch(urlWithParams, { headers, method });
+  return response;
+});
 const requestresponseSlice = createSlice({
   initialState,
   name: 'requestresponse',

@@ -18,3 +18,8 @@ export function toScale(
   let newvalue = ((oldvalue - oldmin) * newrange) / oldrange + newmin;
   return newvalue;
 }
+
+export function formatParams(params: ParamsType) {
+  const formParams = params.map(([p, v]) => `${p}=${v}&`).join('');
+  return '?' + formParams.substring(0, formParams.length - 1);
+}

@@ -34,8 +34,6 @@ export const RequestResponse: FC<RequestResponseType> = ({ requestItem }) => {
     (requestItem && requestItem.method) || 'GET',
   );
   useEffect(() => {
-    console.log(requestItem, ' Request Item');
-    console.log(method);
     if (requestItem) {
       setMethod(requestItem.method);
     }

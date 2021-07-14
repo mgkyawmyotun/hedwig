@@ -2,7 +2,7 @@ import React, { FC, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import styles from '../../scss/modal.module.scss';
 import { CloseIcon } from '../../svg/Close';
-import { toScale } from '../utils';
+import { toScale } from '../../utils';
 
 interface ModalProps {
   children: React.ReactNode;
