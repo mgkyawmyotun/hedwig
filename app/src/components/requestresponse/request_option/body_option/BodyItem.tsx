@@ -63,9 +63,8 @@ export const BodyItem: FC<BodyItemProps> = ({ property, value, onChange }) => {
                     if (event.currentTarget.files) {
                       const file = event.currentTarget.files[0];
                       if (file) {
-                        const fileURL = URL.createObjectURL(file);
-                        setState((prev) => ({ ...prev, value: fileURL }));
-                        onChange(state.property, fileURL);
+                        setState((prev) => ({ ...prev, value: file }));
+                        onChange(state.property, file);
                       }
                     }
                   }}

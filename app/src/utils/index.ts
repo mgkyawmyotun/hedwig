@@ -20,6 +20,30 @@ export function toScale(
 }
 
 export function formatParams(params: ParamsType) {
-  const formParams = params.map(([p, v]) => `${p}=${v}&`).join('');
-  return '?' + formParams.substring(0, formParams.length - 1);
+  let formParams = '';
+  let result = '';
+  if (params.length > 0) {
+    formParams = params
+      .map(([p, v]) => (p.length > 0 && v.length > 0 ? `${p}=${v}&` : ''))
+      .join('');
+    result = '?' + formParams.substring(0, formParams.length - 1);
+  }
+  return (url: string) => {
+    if (params.length > 0) {
+      url += result;
+    }
+    return url;
+  };
+}
+
+export function IsObjectURL(data: string) {
+  return data.startsWith('blob:http');
+}
+export function toFormData(body: BodyOptionsType) {
+  let formData = new FormData();
+  body.forEach(([p, v]) => formData.append(p, v));
+  return formData;
+}
+export function isGetMethod(method: RequestMethodType) {
+  return method === 'GET';
 }

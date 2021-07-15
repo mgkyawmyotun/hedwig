@@ -3,7 +3,7 @@
 
 type URLType = string;
 type ParamType = [string, string];
-type BodyType = [string, string];
+type BodyType = [string, string | File];
 type HeaderType = [string, string];
 type HeaderOptionsType = HeaderType[];
 type BodyOptionsType = BodyType[];

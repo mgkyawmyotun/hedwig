@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { formatParams } from '../../../utils';
+import { formatParams, isGetMethod, toFormData } from '../../../utils';
 import type { RootState } from './../../store';
 const initialState: RequestResponseStateType = {
   url: '',
@@ -14,14 +14,13 @@ export const makeRequest = createAsyncThunk<
   void,
   { state: RootState }
 >('requestresponse/response', async (arg, { getState }) => {
-  console.log(getState());
   const { headers, url, body, method, params } = getState().requestresponse;
-  let urlWithParams = '';
-
-  if (params) {
-    urlWithParams = url + formatParams(params);
-  }
-  const response = await fetch(urlWithParams, { headers, method });
+  const response = await fetch(formatParams(params)(url), {
+    headers,
+    method,
+    body: isGetMethod(method) ? null : toFormData(body),
+    credentials: 'include',
+  });
   return response;
 });
 const requestresponseSlice = createSlice({
@@ -78,9 +77,13 @@ const requestresponseSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(makeRequest.fulfilled, (state, action) => {
-      state.response = action.payload;
-    });
+    builder
+      .addCase(makeRequest.fulfilled, (state, action) => {
+        state.response = action.payload;
+      })
+      .addCase(makeRequest.rejected, (state, action) => {
+        console.log(action.error);
+      });
   },
 });
 
