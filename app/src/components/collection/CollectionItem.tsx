@@ -1,5 +1,5 @@
 import React, { FC, useContext, useState } from 'react';
-import { MainContext, RequestItemType } from '../../context/MainContext';
+import { MainContext } from '../../context/MainContext';
 import { ArrowIcon, ArrowType } from '../../svg/ArrowIcon';
 import { ContentEdiable } from '../contentEditable/ContentEdiable';
 import styles from './../../scss/collection.module.scss';

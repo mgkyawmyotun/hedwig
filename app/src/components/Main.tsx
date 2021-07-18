@@ -1,9 +1,7 @@
 import React, { FC, useRef, useState } from 'react';
-import {
-  CollectionsType,
-  MainContext,
-  RequestItemType,
-} from '../context/MainContext';
+import { Provider } from 'react-redux';
+import { CollectionsType, MainContext } from '../context/MainContext';
+import { store } from '../redux/store';
 import styles from '../scss/main.module.scss';
 import { Collection } from './collection';
 import { RequestResponse } from './requestresponse';
@@ -50,10 +48,12 @@ export const Main: FC<MainProps> = () => {
           onClickRequestItem,
         }}
       >
-        <Collection />
-        <div className={styles.main__function}>
-          <RequestResponse requestItem={requestItem} />
-        </div>
+        <Provider store={store}>
+          <Collection />
+          <div className={styles.main__function}>
+            <RequestResponse requestItem={requestItem} />
+          </div>
+        </Provider>
       </MainContext.Provider>
     </div>
   );

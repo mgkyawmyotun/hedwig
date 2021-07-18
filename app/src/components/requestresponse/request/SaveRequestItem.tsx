@@ -1,13 +1,6 @@
-import React, {
-  FC,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
-import { MainContext } from '../../../context/MainContext';
-import { RequestResponseContext } from '../../../context/RequestResponseContext';
+import React, { FC, useMemo, useRef, useState } from 'react';
+import { itemAdded } from '../../../redux/features/collection/collectionSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import styles from '../../../scss/save_item.module.scss';
 interface SaveRequestItemProps {
   onClose: () => void;
@@ -31,15 +24,14 @@ function SaveRequestName({
   );
 }
 export const SaveRequestItem: FC<SaveRequestItemProps> = ({ onClose }) => {
-  const context = useContext(MainContext);
-  const contextReq = useContext(RequestResponseContext);
   const [collectionValue, setCollectionValue] = useState<number>();
   const oldLi = useRef<EventTarget & HTMLLIElement>();
   const [next, showNext] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
-  useEffect(() => {
-    return () => {};
-  });
+  const collections = useAppSelector((state) => state.collections);
+  const requestresponse = useAppSelector((state) => state.requestresponse);
+  const dispatch = useAppDispatch();
+
   function reset() {
     showNext(false);
     setName('');
@@ -49,25 +41,24 @@ export const SaveRequestItem: FC<SaveRequestItemProps> = ({ onClose }) => {
   const SaveMainPick = useMemo(() => {
     return (
       <div className={styles.save__main__pick}>
-        {context &&
-          context.collections.current.map((collection, index) => (
-            <li
-              key={index}
-              onClick={(e) => {
-                if (oldLi.current) {
-                  oldLi.current.classList.toggle(styles.pick);
-                }
-                e.currentTarget.classList.toggle(styles.pick);
-                oldLi.current = e.currentTarget;
-                setCollectionValue(index);
-              }}
-            >
-              {collection.name}
-            </li>
-          ))}
+        {collections.map((collection, index) => (
+          <li
+            key={index}
+            onClick={(e) => {
+              if (oldLi.current) {
+                oldLi.current.classList.toggle(styles.pick);
+              }
+              e.currentTarget.classList.toggle(styles.pick);
+              oldLi.current = e.currentTarget;
+              setCollectionValue(index);
+            }}
+          >
+            {collection.name}
+          </li>
+        ))}
       </div>
     );
-  }, [context, context && context.collections.current.length]);
+  }, [collections.length]);
   return (
     <div className={styles.save}>
       <div className={styles.save__main}>
@@ -78,7 +69,7 @@ export const SaveRequestItem: FC<SaveRequestItemProps> = ({ onClose }) => {
               setName(e.currentTarget.value);
             }}
           />
-        ) : context && context.collections.current.length === 0 ? (
+        ) : collections.length === 0 ? (
           <div className={styles.no_item}>No Collection / Create One</div>
         ) : (
           SaveMainPick
@@ -106,14 +97,17 @@ export const SaveRequestItem: FC<SaveRequestItemProps> = ({ onClose }) => {
             </button>
             <button
               onClick={() => {
-                if (context && contextReq && collectionValue != undefined) {
-                  const { method, params, options, url } = contextReq;
-                  context.saveItem(
-                    { method, options, params, url, name },
-                    collectionValue,
+                if (requestresponse && collectionValue != undefined) {
+                  const { url, body, headers, params, method } =
+                    requestresponse;
+                  dispatch(
+                    itemAdded(
+                      { url, body, headers, params, method, name },
+                      collectionValue,
+                    ),
                   );
-                  onClose();
                   reset();
+                  onClose();
                 }
               }}
               disabled={name.length <= 0}

@@ -20,7 +20,7 @@ type RequestResponseStateType = {
 type RequestItemType = Pick<
   RequestResponseStateType,
   'url' | 'headers' | 'method' | 'params' | 'body'
->;
+> & { name: string };
 
 type CollectionType = {
   name: string;

@@ -1,6 +1,5 @@
 import React from 'react';
 // import type { RequestResponseContextType } from './RequestResponseContext';
-export type RequestItemType = 'name' | 'method' | 'options' | 'url' | 'params';
 type CollectionType = { name: string; items: RequestItemType[] };
 
 type CollectionsType = CollectionType[];

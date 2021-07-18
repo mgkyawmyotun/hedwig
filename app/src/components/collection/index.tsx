@@ -1,39 +1,35 @@
-import React, { FC, useContext, useState } from 'react';
-import { MainContext } from '../../context/MainContext';
+import React, { FC } from 'react';
+import { collectionAdded } from '../../redux/features/collection/collectionSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import styles from './../../scss/collection.module.scss';
 import { CollectionItem } from './CollectionItem';
 export const Collection: FC = () => {
-  const [collectionItems, setCollectionItems] = useState<{ name: string }[]>(
-    [],
-  );
-  const context = useContext(MainContext);
-  const addNewCollection = () => {
-    if (context) {
-      context.createCollection('collection name', -1);
-    }
-    setCollectionItems((prev) => [...prev, { name: 'collection item' }]);
-  };
+  const collections = useAppSelector((state) => state.collections);
+  const dispatch = useAppDispatch();
   return (
     <div className={styles.collection}>
       <div className={styles.collection__header}>
         <h1>Collection</h1>
-        <div onClick={addNewCollection}>+</div>
+        <div
+          onClick={() => {
+            dispatch(collectionAdded('Collection Name', -1));
+          }}
+        >
+          +
+        </div>
       </div>
-      {context &&
-        collectionItems &&
-        collectionItems.map(({ name }, index) => (
-          <CollectionItem
-            name={name}
-            key={index}
-            items={context.collections.current[index].items}
-            cIndex={index}
-            onItemChange={(value) => {
-              if (context) {
-                context.createCollection(value, index);
-              }
-            }}
-          />
-        ))}
+      {collections.map(({ name }, index) => (
+        <CollectionItem
+          name={name}
+          key={index}
+          items={collections[index].items}
+          cIndex={index}
+          onItemChange={(value) => {
+            dispatch(collectionAdded(value, index));
+          }}
+        />
+      ))}
     </div>
   );
 };
+52;

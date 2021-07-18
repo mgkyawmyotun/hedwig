@@ -51,7 +51,7 @@ export const RequestForm: FC = () => {
           }}
           disabled={!isValid}
         />
-        <SaveButton disabled={!isValid} />
+        <SaveButton disabled={!isValid || URLValue.length === 0} />
       </div>
     </div>
   );
