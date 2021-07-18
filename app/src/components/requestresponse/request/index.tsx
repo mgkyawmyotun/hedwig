@@ -4,7 +4,7 @@ import {
   makeRequest,
   urlAdded,
 } from '../../../redux/features/requestresponse/requestresponseSlice';
-import { useAppDispatch } from '../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import styles from '../../../scss/request.module.scss';
 import { RequestInput } from './RequestInput';
 import { RequestMethod } from './RequestMethod';
@@ -15,7 +15,11 @@ export const RequestForm: FC = () => {
   const [URLValue, setURLValue] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(true);
   const dispatch = useAppDispatch();
-  // const url = useAppSelector((state) => state.requestresponse.url);
+  const url = useAppSelector((state) => state.requestresponse.url);
+  useEffect(() => {
+    console.log('Hello From URL', url);
+    setURLValue(url);
+  }, [url]);
 
   useEffect(() => {
     if (URLValue.length > 0) {
@@ -27,6 +31,7 @@ export const RequestForm: FC = () => {
         require_protocol: true,
       });
       setIsValid(isValidURL);
+      dispatch(urlAdded(URLValue));
       // }
     }
   }, [URLValue]);

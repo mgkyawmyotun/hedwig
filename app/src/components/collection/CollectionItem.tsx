@@ -1,5 +1,6 @@
-import React, { FC, useContext, useState } from 'react';
-import { MainContext } from '../../context/MainContext';
+import React, { FC, useState } from 'react';
+import { requestPicked } from '../../redux/features/requestresponse/requestresponseSlice';
+import { useAppDispatch } from '../../redux/hooks';
 import { ArrowIcon, ArrowType } from '../../svg/ArrowIcon';
 import { ContentEdiable } from '../contentEditable/ContentEdiable';
 import styles from './../../scss/collection.module.scss';
@@ -19,7 +20,7 @@ export const CollectionItem: FC<CollectionItemProps> = ({
 }) => {
   const [arrowType, setArrowType] = useState<ArrowType>(ArrowType.UP);
   const [showItem, setShowItem] = useState<boolean>(false);
-  const context = useContext(MainContext);
+  const dispatch = useAppDispatch();
 
   return (
     <div className={styles.collection__item}>
@@ -49,9 +50,7 @@ export const CollectionItem: FC<CollectionItemProps> = ({
                 name={item.name}
                 key={index + item.name}
                 onClick={() => {
-                  if (context) {
-                    context.onClickRequestItem(index, cIndex);
-                  }
+                  dispatch(requestPicked(item));
                 }}
               />
             ))}

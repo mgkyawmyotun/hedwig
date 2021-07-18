@@ -27,6 +27,11 @@ const requestresponseSlice = createSlice({
   initialState,
   name: 'requestresponse',
   reducers: {
+    requestPicked: (state, action: PayloadAction<RequestItemType>) => {
+      state = Object.assign(state, action.payload);
+      state.response = undefined;
+      console.log(state);
+    },
     methodSwitched: (
       state,
       { payload: method }: PayloadAction<RequestMethodType>,
@@ -87,10 +92,15 @@ const requestresponseSlice = createSlice({
   },
 });
 
-export const { urlAdded, methodSwitched, paramAdded, headerAdded, bodyAdded } =
-  requestresponseSlice.actions;
+export const {
+  urlAdded,
+  methodSwitched,
+  paramAdded,
+  headerAdded,
+  bodyAdded,
+  requestPicked,
+} = requestresponseSlice.actions;
 export default requestresponseSlice.reducer;
-
 function setOption<V>(arrays: any, data: V, index: number) {
   if (arrays[index]) {
     arrays[index] = data;
