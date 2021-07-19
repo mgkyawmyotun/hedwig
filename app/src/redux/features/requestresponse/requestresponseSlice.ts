@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { formatParams, isGetMethod, toFormData } from '../../../utils';
+import {
+  formatParams,
+  isGetMethod,
+  setOption,
+  toFormData,
+} from '../../../utils';
 import type { RootState } from './../../store';
 const initialState: RequestResponseStateType = {
   url: '',
@@ -30,7 +35,6 @@ const requestresponseSlice = createSlice({
     requestPicked: (state, action: PayloadAction<RequestItemType>) => {
       state = Object.assign(state, action.payload);
       state.response = undefined;
-      console.log(state);
     },
     methodSwitched: (
       state,
@@ -101,10 +105,3 @@ export const {
   requestPicked,
 } = requestresponseSlice.actions;
 export default requestresponseSlice.reducer;
-function setOption<V>(arrays: any, data: V, index: number) {
-  if (arrays[index]) {
-    arrays[index] = data;
-    return;
-  }
-  arrays.push(data);
-}

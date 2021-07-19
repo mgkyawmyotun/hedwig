@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import styles from '../scss/nav.module.scss';
 import { Logo } from '../svg/Logo';
 import { Setting } from '../svg/Setting';
-import { Modal } from './modal';
+import { SettingModal } from './settings';
 
 interface NavBarProps {}
 export const NavBar: FC<NavBarProps> = () => {
@@ -19,15 +19,7 @@ export const NavBar: FC<NavBarProps> = () => {
             setModal((prev) => !prev);
           }}
         />
-        <Modal
-          show={modal}
-          size={{ width: 80, height: 80 }}
-          onModalClose={() => setModal(false)}
-          closeOnOutsideClick={false}
-          title="Setting"
-        >
-          <div>Hello World</div>
-        </Modal>
+        <SettingModal modal={modal} setModal={setModal} />
       </div>
     </div>
   );

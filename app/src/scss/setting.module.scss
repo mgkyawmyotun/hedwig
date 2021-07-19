@@ -1,0 +1,32 @@
+@use 'functions';
+@use 'font';
+@use 'color';
+.setting__main {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 3em 1em;
+}
+
+.setting__main__dark_mode {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  font-family: font.$righteous;
+  font-size: functions.responsive_font(0.875rem, 1.5rem);
+  color: color.$davys-grey;
+  & > svg:first-child {
+    width: 1.5em;
+    path {
+      fill: color.$davys-grey !important;
+    }
+  }
+  & > svg:nth-child(3) {
+    flex: 1 1 50%;
+    path {
+      fill: color.$davys-grey !important;
+    }
+  }
+  & > div:first-of-type {
+    margin-left: 1em;
+  }
+}

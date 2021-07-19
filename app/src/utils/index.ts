@@ -47,3 +47,10 @@ export function toFormData(body: BodyOptionsType) {
 export function isGetMethod(method: RequestMethodType) {
   return method === 'GET';
 }
+export function setOption<V>(arrays: any, data: V, index: number) {
+  if (arrays[index]) {
+    arrays[index] = data;
+    return;
+  }
+  arrays.push(data);
+}
