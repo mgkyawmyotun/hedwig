@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 import { LongArrow } from '../../svg/LongArrow';
+import { ToggleButton } from '../toggle/ToggleButton';
 import styles from './../../scss/setting.module.scss';
 export const DarkMode: FC = () => {
   return (
@@ -8,7 +9,7 @@ export const DarkMode: FC = () => {
       <LongArrow />
       <div>Dark Mode</div>
       <LongArrow />
-      <div>Button On / OOF</div>
+      <ToggleButton />
     </div>
   );
 };
