@@ -27,3 +27,6 @@ type CollectionType = {
   items: RequestItemType[];
 };
 type CollectionsStateType = CollectionType[];
+
+//Mode
+type Mode = 'dark' | 'light';

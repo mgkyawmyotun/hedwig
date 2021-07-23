@@ -54,3 +54,26 @@ export function setOption<V>(arrays: any, data: V, index: number) {
   }
   arrays.push(data);
 }
+
+function saveModeToLocalStorage(mode: Mode) {
+  localStorage.setItem('mode', mode);
+}
+
+export function switchToMode(mode: Mode) {
+  if (mode === 'dark') {
+    document.body.classList.toggle('dark', true);
+    document.body.classList.toggle('light', false);
+    saveModeToLocalStorage('dark');
+    return;
+  }
+  document.body.classList.toggle('dark', false);
+  document.body.classList.toggle('light', true);
+  saveModeToLocalStorage('light');
+}
+export function setDefaultMode() {
+  const mode = localStorage.getItem('mode') as Mode | undefined;
+  if (mode) {
+    switchToMode(mode);
+    return;
+  }
+}

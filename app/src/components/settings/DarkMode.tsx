@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { LongArrow } from '../../svg/LongArrow';
+import { switchToMode } from '../../utils';
 import { ToggleButton } from '../toggle/ToggleButton';
 import styles from './../../scss/setting.module.scss';
 export const DarkMode: FC = () => {
@@ -10,13 +11,12 @@ export const DarkMode: FC = () => {
       <LongArrow />
       <ToggleButton
         onOpen={(value) => {
+          console.log('get called');
           if (value) {
-            document.body.classList.toggle('dark', true);
-            document.body.classList.toggle('light', false);
+            switchToMode('dark');
             return;
           }
-          document.body.classList.toggle('dark', false);
-          document.body.classList.toggle('light', true);
+          switchToMode('light');
         }}
       />
     </div>

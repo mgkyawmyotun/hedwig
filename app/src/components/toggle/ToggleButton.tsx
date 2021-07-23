@@ -7,9 +7,10 @@ interface ToggleButtonProps {
   onOpen?: (value: boolean) => void;
 }
 const useOpen = (onOpen?: (value: boolean) => void) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean | undefined>();
+
   useEffect(() => {
-    if (onOpen) {
+    if (onOpen && open !== undefined) {
       onOpen(open);
     }
   }, [open]);
