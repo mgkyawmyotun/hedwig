@@ -9,6 +9,28 @@ body {
 
   background-color: color.$cultured;
 }
+.dark {
+  --cultured: #212529ff;
+  --cultured-2: #495057ff;
+  --gainsboro: #dee2e6ff;
+  --light-gray: #ced4daff;
+  --cadet-blue-crayola: #adb5bdff;
+  --slate-gray: #6c757dff;
+  --davys-grey: #e9ecefff;
+  --gunmetal: #343a40ff;
+  --charleston-green: #f8f9faff;
+}
+.light {
+  --cultured: #f8f9faff;
+  --cultured-2: #e9ecefff;
+  --gainsboro: #dee2e6ff;
+  --light-gray: #ced4daff;
+  --cadet-blue-crayola: #adb5bdff;
+  --slate-gray: #6c757dff;
+  --davys-grey: #495057ff;
+  --gunmetal: #343a40ff;
+  --charleston-green: #212529ff;
+}
 h1 {
   margin: 0;
 }

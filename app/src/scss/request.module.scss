@@ -13,10 +13,12 @@
     font-family: font.$domine;
     padding: 0.5em 0.8em;
     outline: none;
+    caret-color: color.$davys-grey;
     @include border-px-gray(2px);
 
     border-left: none;
     background-color: color.$cultured;
+    color: color.$davys-grey;
     // & :focus {
     // }
     &::placeholder {

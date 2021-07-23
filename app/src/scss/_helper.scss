@@ -26,6 +26,7 @@
   $border-width: 2px,
   $border-color: color.$light-gray
 ) {
+  color: color.$davys-grey;
   &:read-write:focus {
     border-style: none;
     outline: none;

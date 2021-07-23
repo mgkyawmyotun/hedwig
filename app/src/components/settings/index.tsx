@@ -14,7 +14,7 @@ export const SettingModal: FC<SettingModalProps> = ({ modal, setModal }) => {
       show={modal}
       size={{ width: 80, height: 80 }}
       onModalClose={() => setModal(false)}
-      closeOnOutsideClick={false}
+      closeOnOutsideClick={true}
       title="Setting"
     >
       <div className={styles.setting__main}>

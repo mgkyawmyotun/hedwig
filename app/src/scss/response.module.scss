@@ -87,6 +87,7 @@
     &[data-id='response-header'] {
       overflow: scroll;
       font-size: functions.responsive_font(0.875rem, 1.25rem);
+      color: color.$davys-grey;
       & > div {
         display: flex;
         justify-content: space-between;
@@ -100,6 +101,7 @@
     }
     &[data-id='response-cookie'] {
       overflow: scroll;
+      color: color.$davys-grey;
       font-size: functions.responsive_font(0.875rem, 1.25rem);
       & > div {
         display: flex;
