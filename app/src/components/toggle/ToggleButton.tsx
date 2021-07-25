@@ -5,6 +5,7 @@ interface ToggleButtonProps {
   width?: string;
   height?: string;
   onOpen?: (value: boolean) => void;
+  default?: 'open' | 'close';
 }
 const useOpen = (onOpen?: (value: boolean) => void) => {
   const [open, setOpen] = useState<boolean | undefined>();

@@ -7,9 +7,6 @@ export default {
     assets: {
       url: '/assets',
     },
-    pwa: {
-      url: '/pwa',
-    },
   },
   plugins: [
     '@snowpack/plugin-react-refresh',
@@ -29,16 +26,9 @@ export default {
         },
       },
     ],
-    [
-      '@snowpack/plugin-webpack',
-      {
-        /* see "Plugin Options" below */
-      },
-    ],
   ],
   routes: [
     /* Enable an SPA Fallback in development: */
-    { match: 'routes', src: '.*', dest: 'index.html' },
   ],
   optimize: {
     /* Example: Bundle your final build: */
@@ -51,7 +41,7 @@ export default {
     /* ... */
   },
   buildOptions: {
-    out: '../build/app',
+    // out: '../build/app',
     // clean: true,
     // metaUrlPath: '/app/dist',
     // baseUrl: 'http://localhost:5000/app',
