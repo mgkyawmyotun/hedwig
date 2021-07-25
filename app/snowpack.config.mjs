@@ -41,7 +41,7 @@ export default {
     /* ... */
   },
   buildOptions: {
-    // out: '../build/app',
+    out: '../build/app',
     // clean: true,
     // metaUrlPath: '/app/dist',
     // baseUrl: 'http://localhost:5000/app',
