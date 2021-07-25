@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const fileToEdit = './build/app/index.html';
 const directoryPath = path.join(__dirname, 'build');
 const htmlFileToEdit = path.join(directoryPath, 'app', 'index.html');
 
