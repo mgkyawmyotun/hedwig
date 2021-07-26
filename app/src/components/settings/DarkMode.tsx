@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { LongArrow } from '../../svg/LongArrow';
-import { switchToMode } from '../../utils';
+import { getMode, switchToMode } from '../../utils';
 import { ToggleButton } from '../toggle/ToggleButton';
 import styles from './../../scss/setting.module.scss';
 export const DarkMode: FC = () => {
@@ -10,8 +10,8 @@ export const DarkMode: FC = () => {
       <div>Dark Mode</div>
       <LongArrow />
       <ToggleButton
+        defaultStyle={getMode() == 'dark' ? 'open' : 'close'}
         onOpen={(value) => {
-          console.log('get called');
           if (value) {
             switchToMode('dark');
             return;

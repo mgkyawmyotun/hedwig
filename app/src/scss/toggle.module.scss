@@ -1,5 +1,5 @@
 @use 'color';
-.toggle {
+.toggle.open {
   display: none;
   // add default box-sizing for this scope
   &,
@@ -31,7 +31,51 @@
     }
 
     &:after {
-      left: 0;
+      left: 50%;
+    }
+
+    &:before {
+      display: none;
+    }
+  }
+
+  &:checked + .toggle_button:after {
+    left: 0%;
+  }
+}
+.toggle.close {
+  display: none;
+  // add default box-sizing for this scope
+  &,
+  &:after,
+  &:before,
+  & *,
+  & *:after,
+  & *:before,
+  & + .toggle_button {
+    box-sizing: border-box;
+    &::selection {
+      background: none;
+    }
+  }
+
+  + .toggle_button {
+    outline: 0;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    &:after,
+    &:before {
+      position: relative;
+      display: block;
+      content: '';
+      width: 50%;
+      height: 100%;
+    }
+
+    &:after {
+      left: 0%;
     }
 
     &:before {

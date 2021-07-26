@@ -5,7 +5,7 @@ interface ToggleButtonProps {
   width?: string;
   height?: string;
   onOpen?: (value: boolean) => void;
-  default?: 'open' | 'close';
+  defaultStyle?: 'open' | 'close';
 }
 const useOpen = (onOpen?: (value: boolean) => void) => {
   const [open, setOpen] = useState<boolean | undefined>();
@@ -21,19 +21,40 @@ export const ToggleButton: FC<ToggleButtonProps> = ({
   width = '2.5em',
   height = '1.5em',
   onOpen,
+  defaultStyle,
 }) => {
   const [setOpen] = useOpen(onOpen);
+  if (defaultStyle === 'open') {
+    return (
+      <div>
+        <input
+          type="checkbox"
+          id="toggle"
+          className={[styles.toggle, styles.open, styles.toggle_light].join(
+            ' ',
+          )}
+        />
+        <label
+          htmlFor="toggle"
+          className={[styles.toggle_button].join(' ')}
+          style={{ width, height }}
+          onClick={() => {
+            setOpen((v) => !v);
+          }}
+        ></label>
+      </div>
+    );
+  }
   return (
     <div>
       <input
         type="checkbox"
-        name=""
         id="toggle"
-        className={[styles.toggle, styles.toggle_light].join(' ')}
+        className={[styles.toggle, styles.close, styles.toggle_light].join(' ')}
       />
       <label
         htmlFor="toggle"
-        className={styles.toggle_button}
+        className={[styles.toggle_button].join(' ')}
         style={{ width, height }}
         onClick={() => {
           setOpen((v) => !v);

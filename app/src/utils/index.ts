@@ -71,9 +71,12 @@ export function switchToMode(mode: Mode) {
   saveModeToLocalStorage('light');
 }
 export function setDefaultMode() {
-  const mode = localStorage.getItem('mode') as Mode | undefined;
+  const mode = getMode();
   if (mode) {
     switchToMode(mode);
     return;
   }
+}
+export function getMode() {
+  return localStorage.getItem('mode') as Mode | undefined;
 }
