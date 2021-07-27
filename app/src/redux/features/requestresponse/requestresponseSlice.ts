@@ -24,7 +24,7 @@ export const makeRequest = createAsyncThunk<
     headers,
     method,
     body: isGetMethod(method) ? null : toFormData(body),
-    credentials: 'include',
+    credentials: isGetMethod(method) ? 'omit' : 'include',
   });
   return response;
 });
